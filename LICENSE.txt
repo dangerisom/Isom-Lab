@@ -1,0 +1,22 @@
+# Mozilla Public License Version 2.0
+
+Copyright (c) 2025 Isom Lab
+
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+If a copy of the MPL was not distributed with this file, You can obtain one at:
+
+https://mozilla.org/MPL/2.0/
+
+-----------------------------------------------------------------------
+Summary of the Mozilla Public License 2.0:
+
+1. **Freedom to Use & Modify**: You can freely use, modify, and distribute the software.
+2. **Source Code Availability**: If you distribute modified versions, you must provide access to the source code under MPL-2.0.
+3. **Mixing with Other Licenses**: You can combine MPL-licensed files with proprietary code, but modifications to MPL-licensed files must remain open-source.
+4. **Limited Liability & No Warranty**: The software is provided "as is" without any warranty.
+
+For full details, please read the official MPL-2.0 license at:
+https://www.mozilla.org/en-US/MPL/2.0/
+-----------------------------------------------------------------------
+
+By using this software, you agree to the terms of the Mozilla Public License, v. 2.0.

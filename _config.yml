@@ -18,12 +18,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Isom Lab @ The University of Miami Miller School of Medicine
+title: projects
 email: disom@miami.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  This is a repository for code written by the Isom Lab.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+  This is a public code repository for the Isom lab at the University of Miami Miller School of Medicine.
+baseurl: "/projects" # the subpath of your site, e.g. /blog
+url: "https://dangerisom.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: danIsomLab
 github_username:  dangerisom
 

@@ -9,5 +9,5 @@ layout: home
 
 ## Projects
 - [pHinder](https://username.github.io/phinder/)
-- [Superdark](https://username.github.io/superdark/)
+- [superdark](https://username.github.io/superdark/)
 - More projects coming soon!

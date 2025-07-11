@@ -1,12 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, IntVar
 from os.path import sep
-from pHinder.gui.dynamic_option_widget import DynamicOptionWidget
-from pHinder.gui.input_widgets import IntegerInputWidget, FloatInputWidget, StringInputWidget
-from pHinder.gui.file_open import FilePathWidget
-from pHinder.gui.dynamic_option_widget_amino_acid_selection import AminoAcidSelectionWidget
-from pHinder.gui.collapsible_toggle import CollapsiblePane
-from pHinder.gui.terminal_output_widget import TerminalOutputWidget  # Import terminal output widget
+from dynamic_option_widget import DynamicOptionWidget
+from input_widgets import IntegerInputWidget, FloatInputWidget, StringInputWidget
+from file_open import FilePathWidget
+from dynamic_option_widget_amino_acid_selection import AminoAcidSelectionWidget
+from collapsible_toggle import CollapsiblePane
+from terminal_output_widget import TerminalOutputWidget  # Import terminal output widget
 import io
 import threading
 import logging

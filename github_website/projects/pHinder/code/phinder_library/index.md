@@ -10,7 +10,7 @@ title: phinder_library_dude
   {% if path contains this_folder %}
     {% assign rel_path = path | remove_first: this_folder | remove_first: '/' %}
     <li>
-      <a href="https://github.com/dangerisom/IsomLabPrivate/blob/master/{{ path }}">{{ rel_path }}</a>
+      <a href="https://github.com/dangerisom/IsomLabPrivate/blob/main/{{ path }}">{{ rel_path }}</a>
       — <a href="{{ path | relative_url }}" download>Download</a>
     </li>
   {% endif %}

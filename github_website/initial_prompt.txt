@@ -1,0 +1,39 @@
+Basic information
+my username is dangerisom
+my branch is master
+my repo is IsomLabPrivate
+
+Direcory structure
+my directory structure is this:
+IsomLabPrivate
+	projects
+		pHinder
+			code
+			data
+
+Landing page code
+This is the code for my landing page:
+
+---
+layout: default
+title: Isom Lab
+---
+
+# Welcome to the Isom Lab on GitHub
+
+We study how cells sense and respond to their environment, with a focus on acidity, dark proteins, and intercellular cooperativity and communication.
+
+## Explore Our Work
+
+- [Project pHinder](projects/pHinder/)
+
+What I want:
+1 -- I want the name of project to be a link
+2 -- When I click that link, I want the code and data subfolders to be clickable links
+3 -- When I click the links to the code and data subfolders, I want to see the files in the subfolders as links
+4 -- When I selct the file links, I want the files to be display
+5 -- I want this done iteratively for each project
+
+My ask:
+1 -- Generate my index.md files
+2 -- Explicitly tell me where to place these files in the directory structure

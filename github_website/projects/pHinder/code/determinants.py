@@ -1,6 +1,7 @@
-#from ctypes import *
-#libDet = CDLL("/Users/danisom/Python/libPyC/libDetTestLib.dylib")
-#libDet.Determinant.restype = c_double
+# Copyright (c) 2025 Isom Lab
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+# If a copy of the MPL was not distributed with this file, You can obtain one at
+# https://mozilla.org/MPL/2.0/.
 
 def det2x2(det):
 	return det[0][0]*det[1][1] - det[0][1]*det[1][0]

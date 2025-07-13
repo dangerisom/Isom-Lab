@@ -1,3 +1,8 @@
+# Copyright (c) 2025 Isom Lab
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+# If a copy of the MPL was not distributed with this file, You can obtain one at
+# https://mozilla.org/MPL/2.0/.
+
 # The difference between convexhull_v2_1 and convexhull_v2_2 is that the emerging hull
 # is now calculated in a step-wise manner that ensures general position of the hull vertices.
 global zero

@@ -3,14 +3,14 @@ layout: default
 title: Project pHinder
 ---
 
-# Project pHinder
+# 🧬 Project pHinder
 
 This project explores structure-based relationsips using computational geometry.
 
 - [code](code/)
 - [data](data/)
 
-# 🧬 What pHinder Does
+## 🧬 What pHinder Does
 
 **pHinder** is a computational toolkit for analyzing the 3D structure of proteins, with a focus on **side chain topology and burial**. Originally developed to identify **buried ionizable networks**, pHinder has evolved into a **general-purpose platform** for side chain classification and surface-based structural analysis.
 

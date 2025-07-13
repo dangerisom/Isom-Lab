@@ -1915,7 +1915,7 @@ def goFoSurface(firstStartEdge, quadSurface, allowSmallSurfaces=0):
 
 	# Report the number of resultant surfaces.
 	##########################################
-	print("\n\n", "Surface assessment...")
+	print("\n\nSurface assessment...")
 	print(80*"-")
 	i, surfaceLengths = 1, {}
 	for surface in surfaces:

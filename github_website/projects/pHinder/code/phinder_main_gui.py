@@ -9,6 +9,7 @@ from collapsible_toggle import CollapsiblePane
 from terminal_output_widget import TerminalOutputWidget  # Import terminal output widget
 import io
 import threading
+import os
 import logging
 
 # Configure logging at the beginning of the script
@@ -171,10 +172,17 @@ default_surface_options = {
     "WRITE_SURFACE_CREATION_ANIMATION": 0
 }
 
+# Default interface parameters
+INTERFACE_DISTANCE_FILTER = 8.0
+
+# Interface option
+interface_options = {"INTERFACE_DISTANCE_FILTER": INTERFACE_DISTANCE_FILTER}
+
+default_interface_options = {"INTERFACE_DISTANCE_FILTER":8.0}
+
 # Virtual screening options
 MAX_VOID_NETWORK_EDGE_LENGTH = 2.0
 MIN_VOID_NETWORK_SIZE = 10
-GRID_INCREMENT = 3.0
 VIRTUAL_CLASH_CUTOFF = 2.5
 IN_ITERATIONS = 1
 IN_ITERATIONS_STEP_SIZE = 2.0
@@ -184,7 +192,6 @@ OUT_ITERATIONS_STEP_SIZE = 2.0
 virtual_screening_options = {
     "MAX_VOID_NETWORK_EDGE_LENGTH": MAX_VOID_NETWORK_EDGE_LENGTH,
     "MIN_VOID_NETWORK_SIZE": MIN_VOID_NETWORK_SIZE,
-    "GRID_INCREMENT": GRID_INCREMENT,
     "VIRTUAL_CLASH_CUTOFF": VIRTUAL_CLASH_CUTOFF,
     "IN_ITERATIONS": IN_ITERATIONS,
     "IN_ITERATIONS_STEP_SIZE": IN_ITERATIONS_STEP_SIZE,
@@ -195,7 +202,6 @@ virtual_screening_options = {
 default_virtual_screening_options = {
     "MAX_VOID_NETWORK_EDGE_LENGTH": 2.0,
     "MIN_VOID_NETWORK_SIZE": 10,
-    "GRID_INCREMENT": 3.0,
     "VIRTUAL_CLASH_CUTOFF": 2.5,
     "IN_ITERATIONS": 1,
     "IN_ITERATIONS_STEP_SIZE": 2.0,
@@ -265,7 +271,7 @@ def create_network_options_pane(parent):
     option_variables = {}
 
     for row, (option, default_value) in enumerate(default_network_options.items()):
-        if option in ["REDUCED_NETWORK_REPRESENTATION", "SAVE_NETWORK_TRIANGULATION"]:
+        if option in ["REDUCED_NETWORK_REPRESENTATION", "SAVE_NETWORK_TRIANGULATION", "MIN_NETWORK_SIZE"]:
             variable = tk.IntVar(value=default_value)
             option_variables[option] = variable
             checkbutton = ttk.Checkbutton(
@@ -302,6 +308,21 @@ def create_surface_options_pane(parent):
             label.grid(row=row, column=0, padx=5, pady=5, sticky="w")
             entry = ttk.Entry(collapsible_pane.container, textvariable=variable)
             entry.grid(row=row, column=1, padx=5, pady=5, sticky="w")
+
+    return collapsible_pane, option_variables
+
+# Function to create a collapsible pane for interface options
+def create_interface_options_pane(parent):
+    collapsible_pane = CollapsiblePane(parent, title="Interface Options")
+    option_variables = {}
+
+    for row, (option, default_value) in enumerate(default_interface_options.items()):
+        variable = tk.DoubleVar(value=default_value)
+        option_variables[option] = variable
+        label = ttk.Label(collapsible_pane.container, text=option)
+        label.grid(row=row, column=0, padx=5, pady=5, sticky="w")
+        entry = ttk.Entry(collapsible_pane.container, textvariable=variable)
+        entry.grid(row=row, column=1, padx=5, pady=5, sticky="w")
 
     return collapsible_pane, option_variables
 
@@ -350,6 +371,37 @@ def create_advanced_options_pane(parent):
             entry.grid(row=row, column=1, padx=5, pady=5, sticky="w")
 
     return collapsible_pane, option_variables
+
+def write_phinder_log(p, log_path):
+    log_lines = [
+        "=======================================",
+        "       pHinder Parameter Settings",
+        "======================================="
+    ]
+
+    # Create a list of attributes you want to record
+    attr_names = [
+        "gui", "processes", "pdbFilePath", "pdbFileName", "outPath", "pdbFormat", "zip", "chains", "group_chains",
+        "residueSet", "maxNetworkEdgeLength", "minNetworkSize", "reducedNetworkRepresentation",
+        "saveNetworkTriangulation", "highResolutionSurface", "saveSurface", "allowSmallSurfaces",
+        "saveLigandSurfaces", "writeSurfaceCreationAnimation", "coreCutoff", "marginCutoff",
+        "marginCutoffCoreNetwork", "interface_distance_filter", "virtualClashCutoff",
+        "inIterations", "inIterationsStepSize", "outIterations", "outIterationsStepSize",
+        "allowCysCoreSeeding", "includeHydrogens", "includeWater", "includeIons"
+    ]
+
+    max_len = max(len(attr) for attr in attr_names)
+    for attr in attr_names:
+        value = getattr(p, attr, "<not set>")
+        log_lines.append(f"{attr.ljust(max_len)} : {value}")
+
+    log_lines.append("=======================================")
+
+    # Write to file
+    with open(log_path, "w") as f:
+        f.write("\n".join(log_lines) + "\n")
+
+    logging.info(f"pHinder attribute log saved to {log_path}")
 
 # Main function to build and display the GUI
 def main():
@@ -416,6 +468,10 @@ def main():
     surface_options_pane, surface_variables = create_surface_options_pane(left_frame)
     surface_options_pane.pack(pady=10, anchor="w")
 
+    # Add Interface Options Pane
+    interface_options_pane, interface_variables = create_interface_options_pane(left_frame)
+    interface_options_pane.pack(pady=10, anchor="w")
+
     # Add Virtual Screening Options Pane
     virtual_screening_options_pane, virtual_screening_variables = create_virtual_screening_options_pane(left_frame)
     virtual_screening_options_pane.pack(pady=10, anchor="w")
@@ -465,7 +521,7 @@ def main():
                 print("Starting pHinder process...")
                 sys.stdout.flush()  # Explicit flush to update output
 
-                # Dictionary to collect all widget values
+                # Dictionary to collect all widget parameter values
                 results = {}
 
                 # Make sure a PDB file path has been selected
@@ -514,6 +570,11 @@ def main():
                 # Collect values from the Surface Options Pane
                 results["surface_options"] = {
                     option: var.get() for option, var in surface_variables.items()
+                }
+
+                # Collect values from the Interface Options Pane
+                results["interface_options"] = {
+                    option: var.get() for option, var in interface_variables.items()
                 }
 
                 # Collect values from the Virtual Screening Options Pane
@@ -661,10 +722,12 @@ def main():
                 pHinderInstance.marginCutoff = results["sidechain_classification_options"]['MARGIN_CUTOFF']
                 pHinderInstance.marginCutoffCoreNetwork = results["sidechain_classification_options"]['MARGIN_CUTOFF_CORE_NETWORK']
 
+                # Set interface options
+                pHinderInstance.interface_distance_filter = results["interface_options"]["INTERFACE_DISTANCE_FILTER"]
+
                 # Set virtual screening options
                 maxVoidNetworkEdgeLength = results["virtual_screening_options"]['MAX_VOID_NETWORK_EDGE_LENGTH']
                 minVoidNetworkSize = results["virtual_screening_options"]['MIN_VOID_NETWORK_SIZE']
-                pHinderInstance.gridIncrement = results["virtual_screening_options"]['GRID_INCREMENT']
                 pHinderInstance.virtualClashCutoff = results["virtual_screening_options"]['VIRTUAL_CLASH_CUTOFF']
                 pHinderInstance.inIterations = results["virtual_screening_options"]['IN_ITERATIONS']
                 pHinderInstance.inIterationsStepSize = results["virtual_screening_options"]['IN_ITERATIONS_STEP_SIZE']
@@ -705,14 +768,7 @@ def main():
                 pHinderInstance.makeAtomCollections()
                 pHinderInstance.makeVertices4D()
 
-                # Log pHinder parameters
-                if results["advanced_options"]["SAVE_LOG_FILE"]:
-                    logging.info("Run pHinder button pressed.")
-                    with open(pHinderInstance.outPath + "phinder_parameters.log", "w") as file:
-                        file.write("Running with the following parameters:\n")
-                        for key, value in results.items():
-                            logging.info(f"{key}: {value}")
-                            file.write(f"{key}: {value}\n")
+                write_phinder_log(pHinderInstance, pHinderInstance.outPath + "pHinder_parameters.log")
 
                 # The list of pHinder calcuation options
                 if topologyCalculation:
@@ -788,6 +844,9 @@ def main():
 
                 if interfaceClassification:
 
+                    # Classify sidechains at the interface of one or more protein chains.
+                    #####################################################################
+
                     if not topologyCalculation:
 
                         # Triangulate the user defined residue set.
@@ -829,10 +888,6 @@ def main():
                     ###########################################
                     pHinderInstance.classifyInterfaceSidechains()
 
-                    # Classify sidechains at the interface of one or more protein chains.
-                    #####################################################################
-
-
                 if virtualScreenSurfacesCalculation:
 
                     if not topologyCalculation:
@@ -861,11 +916,6 @@ def main():
                         pHinderInstance.writeSurface() # Done with chain adaptation...
                         pHinderInstance.surfaceLigands() # Done with chain adaptation...
                         pHinderInstance.writeLigandSurfaces() # Done with chain adaptation...
-
-                    # # For class...
-                    # pHinderInstance.makeSamplingGridCubic()
-                    # pHinderInstance.filterSamplingPointsUsingConvexHull3D()
-                    # pHinderInstance.filterSamplingPointsUsingProximity(proximityLimit=4.0)
 
                     # Virtual screening: void volumes.
                     ##################################

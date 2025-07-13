@@ -158,26 +158,6 @@ class sidechainClassification:
 		chn = self.v.data.residue.chn
 		self.classificationString = "%4s %5i%4s %s %5.1f" % (locationKey, num, res, chn, dep)
 
-
-	# def __repr__(self):
-		
-	# 	if self.exposed:
-	# 		return self.v.data.residue.name + "-" + \
-	# 		    `self.v.data.residue.num` + \
-	# 		    " Exposed residue at depth " + \
-	# 		    "%4.2f" % (self.depth) + "\n"
-
-	# 	elif self.margin:
-	# 		return self.v.data.residue.name + "-" + \
-	# 		    `self.v.data.residue.num` + \
-	# 		    " Margin residue at depth " + \
-	# 		    "%4.2f" % (self.depth) + "\n"
-	# 	else:
-	# 		return self.v.data.residue.name + "-" + \
-	# 		    `self.v.data.residue.num` + \
-	# 		    " Buried residue at depth " + \
-	# 		    "%4.2f" % (self.depth) + "\n"
-
 def orientS2s(triangulation):
 	# @triangulation really is an s2Dict of a triangulation
 	for node in triangulation:
@@ -520,58 +500,6 @@ def removeClashes(gridVertices, atoms, clashCutoff):
 
 	return vNoClash
 
-# def calculateVoidSurfaceSamplingPoints(surfacePointSet, radius, cut):
-
-# 	# Using a sphere, generate surface sampling points for the void network.
-# 	########################################################################
-# 	lastGpAtomSerial = 0
-# 	lastGp = surfacePointSet[-1]
-# 	lastGpAtomSerial = lastGp.atom_serial + 1
-# 	nSurfacePoints = len(surfacePointSet)
-# 	surfaceVertexSet, surfaceVertexDict = [], {}
-
-# 	for gp in surfacePointSet:
-		
-# 		# Set the u-coordinate, vertex, and atom identifiers.
-# 		#####################################################
-# 		x, y, z = gp.x, gp.y, gp.z
-# 		u = x**2 + y**2 + z**2
-# 		vertex = Vertex4D((x,y,z,u),setC=1)
-# 		vertex.id = gp.atom_serial
-# 		gp.v = vertex # Overwrite the original Vertex() object with new Vertex4D() object.
-# 		vertex.data = gp
-# 		surfaceVertexDict.update({(gp.residue_sequence_number, gp.chain_identifier, gp.atom_name): vertex})
-# 		surfaceVertexSet.append(vertex)
-		
-# 		# The surface point set will be expanded.
-# 		#########################################
-# 		if lastGpAtomSerial:
-# 			s = Sphere()
-# 			s.radius = 1.0
-# 			s.origin_x = x
-# 			s.origin_y = y
-# 			s.origin_z = z
-# 			s.generate_surface_points(pi/cut, pi/cut, general_position=1)
-# 			psas = s.get_pseudoatoms()
-# 			for psa in psas:
-# 				x, y, z, u = psa.x, psa.y, psa.z, (psa.x**2 + psa.y**2 + psa.z**2)
-# 				pv = Vertex4D((x, y, z, u), setC=1)
-# 				psa.atom_serial = lastGpAtomSerial
-# 				psa.residue_sequence_number = lastGpAtomSerial
-# 				psa.chain_identifier = gp.chain_identifier
-# 				pv.id = psa.atom_serial
-# 				psa.v = pv # Overwrite the original Vertex() object with new Vertex4D() object.
-# 				pv.data = psa
-# 				psa.reinitialize()
-				
-# 				surfaceVertexDict.update({(psa.residue_sequence_number, psa.chain_identifier, psa.atom_name): pv})
-# 				surfaceVertexSet.append(pv)
-# 				lastGpAtomSerial += 1
-
-# 	# Return the set of 4D surface vertices.
-# 	######################################
-# 	return surfaceVertexSet
-
 def calculateVoidSurfaces(clashFreeSurfaceVertexSet):
 
 	surfaceVertices = clashFreeSurfaceVertexSet[0]
@@ -587,100 +515,6 @@ def calculateVoidSurfaces(clashFreeSurfaceVertexSet):
 		return voidSurface[1]
 	else:
 		return 0
-
-# def calculateVoidSurfaceSamplingShells(rankedVoidSurface, allAtomVertexDict, outputDirectory, pdbCode):
-
-# 	i = rankedVoidSurface[0]
-# 	voidSurface = rankedVoidSurface[1]
-
-# 	print("in calculateVoidSurfaceSamplingShells()...", len(voidSurface))
-
-# 	shellEdgeStringColors, shellResidues, voidSurfaceEdges = "", {}, ""
-# 	for e in voidSurface:
-
-# 		# The edge object.
-# 		##################
-# 		e = voidSurface[e]
-
-# 		# Set the midPoint attribute of the Edge object.
-# 		################################################
-# 		eMidpoint = e.midPoint
-
-# 		# Identify the closest atom to the Edge object.
-# 		###############################################
-# 		minD, surfaceAtom, closestAtom = 10000000., eMidpoint, None
-# 		for v in allAtomVertexDict.values():
-
-# 			d = distance(eMidpoint, v)
-# 			if d < minD:
-# 				minD, closestAtom = d, v.data
-
-# 		# Set the closestAtom attribute of the Edge object.
-# 		###################################################
-# 		e.closestAtom = closestAtom
-
-# 		if minD < 6.0: # Should I provide as an paramater argument
-
-# 			# The atom vertex must be on the outside the surface.
-# 			#####################################################
-# 			if 1 not in [e.lf.beneath_beyond(closestAtom.v), e.rf.beneath_beyond(closestAtom.v)]:
-
-# 				a1, a2 = surfaceAtom, closestAtom
-# 				shellResidues.update({a2.residue.key:a2.residue})
-
-
-# 				if 'C' in closestAtom.atom_name:
-
-# 					shellEdgeStringColors += 'C:' + s2StringOutput(a1, a2)
-# 					voidSurfaceEdges += 'C:' + s2StringOutput(e.origin_vertex.data, e.destination_vertex.data)
-
-# 				elif 'S' in closestAtom.atom_name:
-
-# 					shellEdgeStringColors += 'S:' + s2StringOutput(a1, a2)
-# 					voidSurfaceEdges += 'S:' + s2StringOutput(e.origin_vertex.data, e.destination_vertex.data)
-
-# 				elif 'N' in closestAtom.atom_name:
-
-# 					shellEdgeStringColors += 'N:' + s2StringOutput(a1, a2)
-# 					voidSurfaceEdges += 'N:' + s2StringOutput(e.origin_vertex.data, e.destination_vertex.data)
-
-# 				elif 'O' in closestAtom.atom_name:
-
-# 					shellEdgeStringColors += 'O:' + s2StringOutput(a1, a2)
-# 					voidSurfaceEdges += 'O:' + s2StringOutput(e.origin_vertex.data, e.destination_vertex.data)
-
-# 			else:
-# 				voidSurfaceEdges += 'X:' + s2StringOutput(e.origin_vertex, e.destination_vertex)
-
-# 		else:
-# 			voidSurfaceEdges += 'X:' + s2StringOutput(e.origin_vertex, e.destination_vertex)
-
-# 	# Write shell to file.
-# 	######################
-# 	if shellResidues:
-
-# 		outFile = outputDirectory + pdbCode + ".shellResidues." + str(i) + ".pdb.gz"
-# 		outputSurfEdgesResidues = gzip.open(outFile,"wt")
-# 		for shellResidue in shellResidues:
-# 			outputSurfEdgesResidues.write(str(shellResidues[shellResidue]))
-# 		outputSurfEdgesResidues.close()
-
-# 		outFile = outputDirectory + pdbCode + ".shellContacts." + str(i) + ".txt.gz"
-# 		outputSurfEdges = gzip.open(outFile,"wt")
-# 		outputSurfEdges.write(shellEdgeStringColors)
-# 		outputSurfEdges.close()
-
-# 		outFile = outputDirectory + pdbCode + ".shellEdges." + str(i) + ".txt.gz"
-# 		outputSurfEdges = gzip.open(outFile,"wt")
-# 		outputSurfEdges.write(voidSurfaceEdges)
-# 		outputSurfEdges.close()
-
-# 		# Pickle the virtual void surface for future access.
-# 		####################################################
-# 		pickledOutput = open(outputDirectory + pdbCode + ".pickled.shellEdges." + str(i) + ".pkl", 'wb')
-# 		pickle.dump(voidSurface, pickledOutput)
-# 		pickledOutput.close()
-
 
 def create_timestamped_directory(base_dir, dir_name):
 
@@ -872,6 +706,10 @@ class pHinder:
 		self.vMargin_bychain = {}
 		self.vCore_bychain = {}
 
+		# Interface classification options
+		##################################
+		self.interface_distance_filter = 8.0
+
 		# Virtual screening variables
 		#############################
 		self.virtualClashCutoff=3.0
@@ -942,18 +780,6 @@ class pHinder:
 				if not exists(self.outPath):
 					mkdir(self.outPath)
 
-		# # Get the PDB code.
-		# pdbFileName = self.pdbFilePathList[0].split("/")[-1]
-		# tempPdbCode = ""
-		# for w1 in pdbFileName.split("."):
-		# 	if w1 not in ["pdb","gz"]:
-		# 		tempPdbCode += w1 + "."
-		# tempPdbCode = tempPdbCode[0:-1]
-		# self.pdbCode = tempPdbCode
-
-		# # Create an instance of a PDBfile (really protein) object.
-		# self.protein = PDBfile(self.pdbFilePathList,zip=self.zip)
-
 		# Get the PDB code...
 		tempPdbCode = ""
 		for w1 in self.pdbFileName.split("."):
@@ -973,14 +799,6 @@ class pHinder:
 		# Make PDB code directory...
 		self.outPath = create_timestamped_directory(self.outPath, self.pdbCode) + sep
 		print(self.outPath)
-		# outPath = self.outPath + self.pdbCode + sep
-		# if make_output_directory:
-		# 	if not exists(outPath):
-		# 		mkdir(outPath)
-
-		# Automatically set to properties of group_chains in there is only one chain in the PDB file...
-		# if len(self.protein.chains) == 1:
-		# 	self.group_chains = 1
 
 		# One or more specific PDB chains was set by the user prior to this function call...
 		if self.gui and self.group_chains:
@@ -996,8 +814,6 @@ class pHinder:
 			# Make PDB chain directories for output...
 			if self.group_chains:
 				if self.outPath:
-					# self.outPath = self.outPath + self.pdbCode + sep + self.chainString + sep 
-					# self.outPath = outPath + sep + self.chainString + sep 
 					self.outPath += self.chainString + sep 
 					if not exists(self.outPath):
 						mkdir(self.outPath)
@@ -1006,8 +822,6 @@ class pHinder:
 				self.outPaths_bychain = {}
 				for chain in self.chains:
 					if chain in self.protein.chains:
-						# outPath = self.outPath + self.pdbCode + sep + chain + sep
-						# outPath_chain = outPath + sep + chain + sep
 						outPath_chain = self.outPath + chain + sep
 						self.outPaths_bychain[chain] = outPath_chain 
 						if not exists(outPath_chain):
@@ -1035,16 +849,12 @@ class pHinder:
 			# Make PDB chain directories for output...
 			if self.group_chains:
 				if self.outPath:
-					# self.outPath = self.outPath + self.pdbCode + sep + self.chainString + sep 
-					# self.outPath = outPath + sep + self.chainString + sep
 					self.outPath += self.chainString + sep
 					if not exists(self.outPath):
 						mkdir(self.outPath)
 			else:
 				self.outPaths_bychain = {}
 				for chain in self.chains:
-					# outPath = self.outPath + self.pdbCode + sep + chain + sep 
-					# outPath_chain = outPath + sep + chain + sep
 					outPath_chain = self.outPath + chain + sep
 					self.outPaths_bychain[chain] = outPath_chain
 					if not exists(outPath_chain):
@@ -1055,44 +865,6 @@ class pHinder:
 		self.het_residues = self.protein.het_residues
 
 		print("Done opening PDB file(s)...")
-
-	# def makeResidueCollections(self):
-
-	# 	# Collect the desired protein chains and their associated ligands and water molecules.
-	# 	self.residues, self.nucleicAcids, self.het_residues, self.waters = {}, {}, {}, {}
-	# 	for chain in self.chains:
-
-	# 		# Get the residues of the protein chain.
-	# 		try:
-	# 			self.residues.update(self.protein.res_chains[chain].residues)
-	# 		except:
-	# 			pass
-
-	# 		# Get the ligands of the protein chain.
-	# 		try:
-	# 			# Get the hetero-residue regardless of its composition.
-	# 			self.het_residues.update(self.protein.het_bychain[chain])
-
-	# 			# If the hetero-residue belongs to DNA or RNA, save it by chain in nucleicAcids.
-	# 			nucleicAcidResidue = 0
-	# 			for hetResidue in self.protein.het_bychain[chain]:
-	# 				if self.protein.het_bychain[chain][hetResidue].name in ["G", "C", "A", "T", "U"]:
-	# 					nucleicAcidResidue = 1
-	# 					break
-	# 			if nucleicAcidResidue:
-	# 				if chain not in self.nucleicAcids:
-	# 					self.nucleicAcids.update({chain:{}})
-	# 				self.nucleicAcids.update(self.protein.het_bychain[chain])
-	# 		except:
-	# 			pass
-
-	# 		# Get water molecules associated with the protein chain.
-	# 		try:
-	# 			self.waters.update(self.protein.wat_bychain[chain])
-	# 		except:
-	# 			pass
-
-	# 	print("Done gathering residue collections...")
 
 	def hetLigand4D(self):
 
@@ -1115,24 +887,6 @@ class pHinder:
 				self.residues.update({hetResidue:self.het_residues[hetResidue]})  
 
 			print("Done creating 4D ligand atoms....")
-
-	# def hetWater4D(self):
-
-	# 	# Convert the water molecules to 4-dimensional vertices compatible with triangulation.
-	# 	self.waterVertices, self.waterVertexDict = [], {}
-	# 	for water in self.waters:
-	# 		for atom in self.waters[water].atoms.values():
-	# 			x, y, z= atom.x, atom.y, atom.z
-	# 			u = atom.x**2 + atom.y**2 + atom.z**2
-	# 			vertex = Vertex4D((x,y,z,u),setC=1)
-	# 			# Have to explicitly assign the residue instance.
-	# 			atom.residue = self.waters[water]
-	# 			vertex.data = atom
-	# 			vertex.id = atom.atom_serial
-	# 			self.waterVertexDict.update({(atom.residue.num, atom.residue.chn, atom.residue.name, atom.atom_name):vertex})
-	# 			self.waterVertices.append(vertex)
-
-	# 	print("Done creating 4D water atoms....")
 
 	def hydrogens(self):
 
@@ -1538,8 +1292,6 @@ class pHinder:
 		# Grouped PDB chains...
 		if self.group_chains:
 
-			print("2, here---------------------------->>>>>>>>>>>")
-
 			# The global side chain topology network
 			#########################################
 			minimizeNetworks(self.networks, self.mutatedTscTriangulation)
@@ -1575,49 +1327,6 @@ class pHinder:
 					self.topology_networks_bychain[chain] = networks
 					writeNetworkToFile(networks, mutatedTscTriangulation, "topo", outPath, self.pdbCode, chain=chain)
 				print("Done writing network reports...chain", chain)
-
-	# def triangulateAllTscAtomsForClassfication(self):
-
-	# 	# Grouped PDB chains...
-	# 	if self.group_chains:
-
-	# 		# Triangulate all the protein vertices
-	# 		print("\n\nTriangulating all vertices....chain group", self.chainString)
-	# 		print(80*"-")
-	# 		self.tscTriangulationClassification = convexHull4D(self.tscVertexDictSelection.values())
-	# 		print("Done triangulating all vertices....chain group", self.chainString)
-
-	# 		# CRITICAL FUNCTION CALL !!!!
-	# 		# The orientation of the networks edges needs to be updated after the maxNetworkEdgeLength condition is applied.
-	# 		# Also, rename the original triangulation, which will not be mutated, for clarity.
-	# 		self.tscTriangulationClassification.orientS2s()
-	# 		self.originalTscTriangulationClassification = self.tscTriangulationClassification.s1Dict
-	# 		print("Done triangulating all TSC atoms....chain group", self.chainString)
-
-	# 	# Individual PDB chains...
-	# 	else:
-
-	# 		for chain in self.chains:
-
-	# 			tscVertexDictSelection = {}
-	# 			for key in self.tscVertexDict:
-	# 				if key[1] == chain:
-	# 					tscVertexDictSelection[key] = self.tscVertexDict[key]
-
-	# 			# Triangulate all the protein vertices
-	# 			print("\n\nriangulating all vertices....chain", chain)
-	# 			print(80*"-")
-	# 			tscTriangulation = convexHull4D(tscVertexDictSelection.values())
-	# 			print("Done triangulating all vertices....chain", chain)
-
-	# 			# CRITICAL FUNCTION CALL !!!!
-	# 			# The orientation of the networks edges needs to be updated after the maxNetworkEdgeLength condition is applied.
-	# 			# Also, rename the original triangulation, which will not be mutated, for clarity.
-	# 			tscTriangulation.orientS2s()
-	# 			originalTscTriangulation = tscTriangulation.s1Dict
-
-	# 			self.triangulations_bychain_classfication[chain] = [tscTriangulation, mutatedTscTriangulation, originalTscTriangulation]
-	# 			print("Done triangulating TSC atoms....chain", chain)
 
 	def identifyTightBonds(self):
 
@@ -2201,13 +1910,6 @@ class pHinder:
 				if self.writeSurfaceCreationAnimation:
 					writeSurfaceCreationAnimation = self.outPaths_bychain[chain]
 				surfaceResult = calculateSurface(caVertices, circumSphereRadiusLimit, minArea=minArea, writeSurfaceCreationAnimation=writeSurfaceCreationAnimation, highResolutionSurface=self.highResolutionSurface, allowSmallSurfaces=self.allowSmallSurfaces)
-				
-				# 2023.04.04 Revising to maintain chain, even if there is no surface for it
-				# # Only proceed if there is a surface to work with.
-				# if not surfaceResult:
-				# 	print("Using the current set of parameters, no surface could be calculated...chain", chain)
-				# 	return 0
-				# else:
 				self.hull4D_bychain[chain] = surfaceResult[0]
 				self.quadSurface_bychain[chain] = surfaceResult[1]
 
@@ -2235,7 +1937,7 @@ class pHinder:
 			script_body += "coordinateTriples = " + str(coordinateTriples) + "\n"
 			script_body += "from pymol.cgo import *\n"
 			script_body += "from pymol import cmd\n"
-			script_body += "background_color = \"white\"\n"
+			script_body += "background_color = \"black\"\n"
 			script_body += "cmd.bg_color(color=background_color)\n"
 			script_body += "cgo_line_width = 2.0\n"
 			script_body += "colorR, colorG, colorB = 0.55, 0.57, 0.67\n"
@@ -2286,7 +1988,7 @@ class pHinder:
 				script_body += "coordinateTriples = " + str(coordinateTriples) + "\n"
 				script_body += "from pymol.cgo import *\n"
 				script_body += "from pymol import cmd\n"
-				script_body += "background_color = \"white\"\n"
+				script_body += "background_color = \"black\"\n"
 				script_body += "cmd.bg_color(color=background_color)\n"
 				script_body += "cgo_line_width = 2.0\n"
 				script_body += "colorR, colorG, colorB = 0.55, 0.57, 0.67\n"
@@ -2435,7 +2137,7 @@ class pHinder:
 					script_body += "coordinateTriples = " + str(coordinateTriples) + "\n"
 					script_body += "from pymol.cgo import *\n"
 					script_body += "from pymol import cmd\n"
-					script_body += "background_color = \"white\"\n"
+					script_body += "background_color = \"black\"\n"
 					script_body += "cmd.bg_color(color=background_color)\n"
 					script_body += "cgo_line_width = 2.0\n"
 					script_body += "colorR, colorG, colorB = 0.55, 0.57, 0.67\n"
@@ -2485,7 +2187,7 @@ class pHinder:
 						script_body += "coordinateTriples = " + str(coordinateTriples) + "\n"
 						script_body += "from pymol.cgo import *\n"
 						script_body += "from pymol import cmd\n"
-						script_body += "background_color = \"white\"\n"
+						script_body += "background_color = \"black\"\n"
 						script_body += "cmd.bg_color(color=background_color)\n"
 						script_body += "cgo_line_width = 2.0\n"
 						script_body += "colorR, colorG, colorB = 0.55, 0.57, 0.67\n"
@@ -2603,20 +2305,6 @@ class pHinder:
 					# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 					triangulation = deepcopy(self.mutatedTscTriangulation)
 
-					# networks = classification_subnetworks
-					# for network in networks:
-					# 	for node in network:
-					# 		networks[network][node] = triangulation[node].s1
-					# 		s2Keep = {}
-					# 		for s2_key in triangulation[node].s2s:
-					# 			if s2_key[0] in network and s2_key[1] in network:
-					# 				# Residue names (could include ion names if included)...
-					# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-					# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-					# 				s2Keep[s2_key] = None
-					# 		s2Keep = list(s2Keep)
-					# 		triangulation[node].s2s = s2Keep
-
 					networks = classification_subnetworks
 					for network in networks:
 						for node in network:
@@ -2667,20 +2355,6 @@ class pHinder:
 
 					# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 					triangulation = deepcopy(self.mutatedTscTriangulation)
-
-					# networks = classification_subnetworks
-					# for network in networks:
-					# 	for node in network:
-					# 		networks[network][node] = triangulation[node].s1
-					# 		s2Keep = {}
-					# 		for s2_key in triangulation[node].s2s:
-					# 			if s2_key[0] in network and s2_key[1] in network:
-					# 				# Residue names (could include ion names if included)...
-					# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-					# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-					# 				s2Keep[s2_key] = None
-					# 		s2Keep = list(s2Keep)
-					# 		triangulation[node].s2s = s2Keep
 
 					networks = classification_subnetworks
 					for network in networks:
@@ -2760,20 +2434,6 @@ class pHinder:
 						# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 						triangulation = deepcopy(mutatedTscTriangulation)
 
-						# networks = classification_subnetworks
-						# for network in networks:
-						# 	for node in network:
-						# 		networks[network][node] = triangulation[node].s1
-						# 		s2Keep = {}
-						# 		for s2_key in triangulation[node].s2s:
-						# 			if s2_key[0] in network and s2_key[1] in network:
-						# 				# Residue names (could include ion names if included)...
-						# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-						# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-						# 				s2Keep[s2_key] = None
-						# 		s2Keep = list(s2Keep)
-						# 		triangulation[node].s2s = s2Keep
-
 						networks = classification_subnetworks
 						for network in networks:
 							for node in network:
@@ -2837,20 +2497,6 @@ class pHinder:
 						# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 						triangulation = deepcopy(mutatedTscTriangulation)
 
-						# networks = classification_subnetworks
-						# for network in networks:
-						# 	for node in network:
-						# 		networks[network][node] = triangulation[node].s1
-						# 		s2Keep = {}
-						# 		for s2_key in triangulation[node].s2s:
-						# 			if s2_key[0] in network and s2_key[1] in network:
-						# 				# Residue names (could include ion names if included)...
-						# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-						# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-						# 				s2Keep[s2_key] = None
-						# 		s2Keep = list(s2Keep)
-						# 		triangulation[node].s2s = s2Keep
-
 						networks = classification_subnetworks
 						for network in networks:
 							for node in network:
@@ -2903,20 +2549,6 @@ class pHinder:
 						# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 						triangulation = deepcopy(mutatedTscTriangulation)
 
-						# networks = classification_subnetworks
-						# for network in networks:
-						# 	for node in network:
-						# 		networks[network][node] = triangulation[node].s1
-						# 		s2Keep = {}
-						# 		for s2_key in triangulation[node].s2s:
-						# 			if s2_key[0] in network and s2_key[1] in network:
-						# 				# Residue names (could include ion names if included)...
-						# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-						# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-						# 				s2Keep[s2_key] = None
-						# 		s2Keep = list(s2Keep)
-						# 		triangulation[node].s2s = s2Keep
-
 						networks = classification_subnetworks
 						for network in networks:
 							for node in network:
@@ -2968,20 +2600,6 @@ class pHinder:
 
 						# Copy the minimized topologial network of amino acid side chains and trim for exposed network nodes...
 						triangulation = deepcopy(mutatedTscTriangulation)
-
-						# networks = classification_subnetworks
-						# for network in networks:
-						# 	for node in network:
-						# 		networks[network][node] = triangulation[node].s1
-						# 		s2Keep = {}
-						# 		for s2_key in triangulation[node].s2s:
-						# 			if s2_key[0] in network and s2_key[1] in network:
-						# 				# Residue names (could include ion names if included)...
-						# 				rn1 = triangulation[s2_key[0]].s1.data.residue_name 
-						# 				rn2 = triangulation[s2_key[1]].s1.data.residue_name
-						# 				s2Keep[s2_key] = None
-						# 		s2Keep = list(s2Keep)
-						# 		triangulation[node].s2s = s2Keep
 
 						networks = classification_subnetworks
 						for network in networks:
@@ -3212,7 +2830,7 @@ class pHinder:
 				else:
 					classBook.save(outPath + self.pdbCode + ".SidechainClassification-" + chain + ".xlsx")
 
-	def classifyInterfaceSidechains(self, distance_filter=8.0):
+	def classifyInterfaceSidechains(self):
 
 		interface = {}
 		if not self.group_chains:
@@ -3242,7 +2860,7 @@ class pHinder:
 							for v_2_key in v_2s:
 								classificationInstance_2 = v_2s[v_2_key]
 								d = distance(classificationInstance_1.v, classificationInstance_2.v)
-								if d < distance_filter:
+								if d < self.interface_distance_filter:
 									chain_key = tuple(sorted([chain_1, chain_2]))
 									if chain_key not in interface:
 										interface[chain_key] = set()
@@ -3274,10 +2892,28 @@ class pHinder:
 
 		# Write interface files
 		for chain_combo in interface:
-			f = open(self.outPath + self.pdbCode + ".interface-" + "".join(chain_combo) + ".pdb", "w")
+
+			# Order by chain and key
+			ordered_residues = {}
 			for contacting_residue in interface[chain_combo]:
-				f.write(str(contacting_residue))
+				chain = contacting_residue.key[-1]
+				if chain not in ordered_residues:
+					ordered_residues[chain] = {contacting_residue.key:contacting_residue}
+				else:
+					ordered_residues[chain].update({contacting_residue.key:contacting_residue})
+
+			f = open(self.outPath + self.pdbCode + ".interface-" + "".join(chain_combo) + ".pdb", "w")
+			chains = sorted(ordered_residues)
+			for chain in chains:
+				chain_keys = sorted(ordered_residues[chain])
+				for chain_key in chain_keys:
+					f.write(str(ordered_residues[chain][chain_key]))
 			f.close()
+
+			# f = open(self.outPath + self.pdbCode + ".interface-" + "".join(chain_combo) + ".pdb", "w")
+			# for contacting_residue in interface[chain_combo]:
+			# 	f.write(str(contacting_residue))
+			# f.close()
 
 	def virtualScreen(self):
 
@@ -3397,43 +3033,6 @@ class pHinder:
 		#################
 		return result
 
-	# def multiprocessCalculateVoidSurfaceSamplingPoints(self, radius, cut):
-
-	# 	# Ensure that the number of processes matches the number of available CPUs.
-	# 	if self.processes > self.cpuCount:
-	# 		self.processes = self.cpuCount
-
-	# 	# Python and System information.
-	# 	################################
-	# 	print('\nPython version  :', platform.python_version())
-	# 	print('Compiler          :', platform.python_compiler())
-	# 	print(80*'-')
-	# 	print('System            :', platform.system())
-	# 	print('Release           :', platform.release())
-	# 	print('Machine           :', platform.machine())
-	# 	print('Processor         :', platform.processor())
-	# 	print('CPU count         :', self.cpuCount)
-	# 	print('Requested CPUs    :', self.processes)
-	# 	print('Interpreter       :', platform.architecture()[0])
-	# 	print('\n')
-
-	# 	# Parallelize the calculation.
-	# 	##############################
-	# 	pool = mp.Pool(processes=self.processes)
-	# 	results = [pool.apply_async(calculateVoidSurfaceSamplingPoints, args=(voidSurfaceAtomSet, radius, cut)) for voidSurfaceAtomSet in self.voidSurfaceAtomSets]
-	# 	results = [p.get() for p in results]
-	# 	pool.close()
-
-	# 	# Merge the results from the parallel calculations.
-	# 	###################################################
-	# 	result = []
-	# 	for r in results:
-	# 		result.append(r)
-
-	# 	# Return the result.
-	# 	####################
-	# 	self.voidSurfaceVertexSets = result
-
 	def multiprocessCalculateVoidSurfaces(self, clashFreeSurfaceVertexSets):
 
 		# Python and System information.
@@ -3495,75 +3094,6 @@ class pHinder:
 		results = [p.get() for p in results]
 		pool.close()
 
-	def makeSamplingGridCubic(self):
-
-		# Sampling option #1 (my preferred method)
-		# Use the protein coordinates to generate a grid of sampling points. 
-		
-		# Get the maximum and minimum X, Y, and Z coordinates.
-		######################################################
-		minX, minY, minZ, maxX, maxY, maxZ = 100000., 100000., 100000., -100000., -100000., -100000.
-		for atom in self.allAtoms:
-			
-			# Current x, y, and z coordinates.
-			##################################
-			x, y, z = atom.x, atom.y, atom.z
-			
-			# X
-			####
-			if x < minX:
-				minX = x
-			if x > maxX:
-				maxX = x
-
-			# Y
-			####
-			if y < minY:
-				minY = y
-			if y > maxY:
-				maxY = y
-					
-			# Z
-			####
-			if z < minZ:
-				minZ = z
-			if z > maxZ:
-				maxZ = z
-
-		# Calculate the boundaries of the grid cube.
-		############################################
-		self.gridVertices, self.gridAtoms = [], []
-		x, y, z, i = minX, minY, minZ, 1
-		while x <= maxX + self.gridIncrement:
-			while y <= maxY + self.gridIncrement:
-				while z <= maxZ + self.gridIncrement:
-					newSphere = Sphere()
-					newSphere.origin_x = x
-					newSphere.origin_y = y
-					newSphere.origin_z = z
-					u = x**2 + y**2 + z**2
-					vertex = Vertex4D((x,y,z,u),setC=1)
-					vertex.id = i
-					vertex.data = newSphere.get_origin_psa()
-					vertex.data.v = vertex # Overwrite the original Vertex() object with new Vertex4D() object.
-					self.gridVertices.append(vertex)
-					self.gridAtoms.append(newSphere)
-					i += 1
-					z += self.gridIncrement
-				z = minZ
-				y += self.gridIncrement
-			y = minY
-			x += self.gridIncrement
-
-		# Write the grid to file.
-		#########################
-		output = gzip.open(self.outputDirectory + self.pdbCode + ".cubeGrid.pdb.gz","wt")
-		for gridAtom in self.gridAtoms:
-			output.write(str(gridAtom.get_origin_psa()))
-		output.close()
-
-		print("Done calculating virtual sampling grid...")
-
 	def makeSamplingGridUsingProteinSurface(self):
 
 		# Sampling option #2 (my preferred method)
@@ -3598,64 +3128,6 @@ class pHinder:
 				for gridAtom in self.gridAtoms_bychain[chain]:
 					output.write(str(gridAtom))
 				output.close()
-
-		# # Grouped PDB chains...
-		# if self.group_chains:
-
-		# 	# Write the grid to file.
-		# 	#########################
-		# 	output = gzip.open(self.outPath + self.pdbCode + ".grid.pdb.gz", "wt")
-		# 	for gridAtom in self.gridAtoms:
-		# 		output.write(str(gridAtom))
-		# 	output.close()
-
-		# # Individual PDB chains...
-		# else:
-
-		# 	for chain in self.chains:
-
-		# 		outPath = self.outPaths_bychain[chain]
-
-
-		# 		outFile = open(outPath + self.pdbCode + ".triangulation-" + chain + ".py", "w")
-		# 		outFile.write(script_body)
-		# 		outFile.close()
-
-		# # Write the grid to file.
-		# #########################
-		# # output = gzip.open(self.outputDirectory + self.pdbCode + ".grid.pdb.gz", "wt")
-		# output = gzip.open(self.outPath + self.pdbCode + ".grid.pdb.gz", "wt")
-		# for gridAtom in self.gridAtoms:
-		# 	output.write(str(gridAtom))
-		# output.close()
-
-	# def makeSamplingGridUsingProteinSurfaceCreviceFacets(self):
-
-	# 	# Sampling option #3 
-	# 	# Use the protein surface to generate the virtual sampling grid from only crevice facets.
-
-	# 	# XXXX Options for swelling?
-
-	# 	self.gridVertices = generateVirtualScreeningVertices(self.quadSurfaceCrevice, inIterations=self.inIterations, inIterationsStepSize=self.inIterationsStepSize, outIterations=self.outIterations, outIterationsStepSize=self.outIterationsStepSize)
-	# 	self.gridAtoms = []
-	# 	for gridVertex in self.gridVertices:
-	# 		self.gridAtoms.append(gridVertex.data)
-
-	# 	# Write the grid to file.
-	# 	#########################
-	# 	output = gzip.open(self.outputDirectory + self.pdbCode + ".grid.crevices.pdb.gz", "wt")
-	# 	for gridAtom in self.gridAtoms:
-	# 		output.write(str(gridAtom))
-	# 	output.close()
-
-	def filterSamplingPointsUsingConvexHull3D(self):
-
-		print("Calculating the 3D convex hull of the protein...")
-		self.hull3D = convexHull3D(self.caVertices)
-
-		print("\nStart -- Parallel call to calculate multiprocessInHull.")
-		self.multiprocessInHull()
-		print("\nEnd -- Parallel call to calculate multiprocessInHull."	)
 
 	def filterSamplingPointsUsingClashes(self):
 
@@ -3712,54 +3184,6 @@ class pHinder:
 
 		print("\nDone -- Parallel call to calculate multiprocessRemoveClashes.")
 
-	# def filterSamplingPointsUsingProximity(self, proximityLimit=1.0):
-
-	# 	print("\nStart -- Call to calculate filterSamplingPointsUsingProximity.")
-
-	# 	gridVertices = {}
-	# 	for v in self.gridVerticesNoClash:
-	# 		gridVertices[(v.x, v.y, v.z)] = v
-
-	# 	proximityViolators = 1
-	# 	while proximityViolators:
-
-	# 		proximityViolators, proximityCondensed = {}, {}
-	# 		for v1 in gridVertices:
-
-	# 			# Convert from key to vertex.
-	# 			#############################
-	# 			v1 = gridVertices[v1]
-
-	# 			breakFlag = 0
-	# 			for v2 in gridVertices:
-
-	# 				# Convert from key to vertex.
-	# 				#############################
-	# 				v2 = gridVertices[v2]
-
-	# 				if v1 == v2:
-	# 					continue
-
-	# 				# Condense two grid points to one using the proximity limit.
-	# 				############################################################
-	# 				if distance(v1, v2) < proximityLimit:
-	# 					comVertex = centroid4D((v1, v2), PseudoAtom())
-	# 					proximityCondensed[(comVertex.x, comVertex.y, comVertex.z)] = comVertex
-	# 					proximityViolators[v1], proximityViolators[v2] = None, None
-	# 					breakFlag = 1
-	# 					break
-
-	# 			if breakFlag:
-	# 				break
-
-	# 		for proximityViolator in proximityViolators:
-	# 			del gridVertices[(proximityViolator.x, proximityViolator.y, proximityViolator.z)]
-	# 		gridVertices.update(proximityCondensed)
-
-	# 	self.gridVerticesNoClash = gridVertices.values()
-
-	# 	print("\nEnd -- Call to calculate filterSamplingPointsUsingProximity.")
-
 	def triangulateRemainingGridPoints(self):
 
 		print("triangulateRemainingGridPoints.........")
@@ -3792,51 +3216,6 @@ class pHinder:
 				self.gridPointTriangulation_bychain[chain] = gridPointTriangulation
 				self.gridPointMesh_bychain[chain] = gridPointMesh
 
-	# def samplingReduction(self, minVoidNetworkEdgeLength=0.5):
-
-	# 	reductionLimit = minVoidNetworkEdgeLength
-
-	# 	print("Start -- samplingReduction...")
-
-	# 	# Rank the triangulation nodes by node order...
-	# 	rankedNodes = {}
-	# 	for node in self.gridPointTriangulation:
-	# 		l = len(self.gridPointTriangulation[node].s2s)
-	# 		rankedNodes[(l, node)] = None
-
-	# 	# Identify redundant nodes using the reductionLimit...
-	# 	keys = sorted(rankedNodes)
-	# 	keys.reverse()
-	# 	markForDeletion = {}
-	# 	for key in keys:
-	# 		node = key[1]
-	# 		if node in markForDeletion:
-	# 			continue
-	# 		v1 = self.gridPointTriangulation[node].s1
-	# 		for s2 in self.gridPointTriangulation[node].s2s:
-	# 			for v2id in s2:
-	# 				if v2id != node:
-	# 					v2 = self.gridPointTriangulation[v2id].s1
-	# 					d = distance(v1, v2)
-	# 					if d < reductionLimit:
-	# 						markForDeletion[v2id] = None
-	# 	# Remove redundant nodes...
-	# 	vReduced = []
-	# 	for key in keys:
-	# 		node = key[1]
-	# 		if node not in markForDeletion:
-	# 			vReduced.append(self.gridPointTriangulation[node].s1)
-	# 	self.gridVerticesNoClash = vReduced
-
-	# 	# Triangulate the refined set of reduced nodes...
-	# 	print("Start -- Serial triangulation of reduced nodes...", len(self.gridVerticesNoClash))
-	# 	gridPointMesh = convexHull4D(self.gridVerticesNoClash, walkDistanceLimit=0.25)
-	# 	gridPointTriangulation = gridPointMesh.s1Dict
-	# 	print("End -- Serial triangulation of reduced nodes...")
-
-	# 	self.gridPointTriangulation = gridPointTriangulation
-	# 	self.gridPointMesh = gridPointMesh
-
 	def identifyAndParseIndividualSamplingVoids(self, maxVoidNetworkEdgeLength=0, minVoidNetworkEdgeLength=0, minVoidNetworkSize=1, psa=0):#, reduced=0, pruneDistance=0):
 
 		if not maxVoidNetworkEdgeLength:
@@ -3860,7 +3239,6 @@ class pHinder:
 			prunedVoidNetworkTriangulation = deepcopy(self.gridPointTriangulation) # Key feature.
 			prunedVoidNetworkTriangulationResult = pruneTriangulationGoFo(prunedVoidNetworkTriangulation, maxVoidNetworkEdgeLength, minNetworkEdgeLength=minVoidNetworkEdgeLength, psa=psa)
 			self.prunedVoidNetworkTriangulation = prunedVoidNetworkTriangulationResult[0]
-			# self.prunedVoidNetworks = prunedVoidNetworkTriangulationResult[2]
 			self.prunedVoidNetworks = prunedVoidNetworkTriangulationResult[1]
 
 			# Iteratively minimize the pruned triangulation.
@@ -3883,7 +3261,6 @@ class pHinder:
 				prunedVoidNetworkTriangulation = deepcopy(gridPointTriangulation) # Key feature.
 				prunedVoidNetworkTriangulationResult = pruneTriangulationGoFo(prunedVoidNetworkTriangulation, maxVoidNetworkEdgeLength, minNetworkEdgeLength=minVoidNetworkEdgeLength, psa=psa)
 				self.prunedVoidNetworkTriangulation_bychain[chain] = prunedVoidNetworkTriangulationResult[0]
-				# self.prunedVoidNetworks = prunedVoidNetworkTriangulationResult[2]
 				self.prunedVoidNetworks_bychain[chain] = prunedVoidNetworkTriangulationResult[1]
 
 				# Iteratively minimize the pruned triangulation.
@@ -3893,754 +3270,6 @@ class pHinder:
 				self.voidNetworks_bychain[chain] = getFinalMinimizedNetworks(self.prunedVoidNetworks_bychain[chain], minNetworkSize=minVoidNetworkSize)
 				if self.voidNetworks_bychain[chain]:
 					writeNetworkToFile(self.voidNetworks_bychain[chain], self.prunedVoidNetworkTriangulation_bychain[chain], "chemiForms", self.outPath + chain + sep, self.pdbCode, include_residues=0, chain=chain)
-
-
-
-		# # In case it is need by later calculations....
-		# self.voidNetworks = self.prunedVoidNetworks
-
-		# i = 1
-		# previousResult = None
-		# # XXXX minimizeNetworks need to update
-		# minimizing = minimizeNetworks(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-		# while minimizing:
-		# 	minimizing = minimizeNetworks(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-		# 	previousResult = minimizing
-		# 	i += 1
-		# self.voidNetworks = self.prunedVoidNetworks
-
-		# # Arrange networks from largest to smallest. All prune using self.minNetworkSize...
-		# self.rankedVoidNetworks = {}
-		# for voidNetwork in self.voidNetworks:
-		# 	if len(voidNetwork) > self.minNetworkSize:
-		# 		self.rankedVoidNetworks[(len(voidNetwork), voidNetwork)] = voidNetwork
-		# rankedVoidNetworksKeys = sorted(self.rankedVoidNetworks)
-		# rankedVoidNetworksKeys.reverse()
-
-		# # if not reduced:
-
-		# # Create a directory for the individual chemiform network edge files.
-		# #####################################################################
-		# if not exists(self.outputDirectory + "chemiformNetworks"):
-		# 	mkdir(self.outputDirectory + "chemiformNetworks")
-		# else:
-		# 	rmtree(self.outputDirectory + "chemiformNetworks")
-		# 	mkdir(self.outputDirectory + "chemiformNetworks")
-
-		# # Create a directory for the individual chemiform PDB files.
-		# ############################################################
-		# if not exists(self.outputDirectory + "chemiformNodes"):
-		# 	mkdir(self.outputDirectory + "chemiformNodes")
-		# else:
-		# 	rmtree(self.outputDirectory + "chemiformNodes")
-		# 	mkdir(self.outputDirectory + "chemiformNodes")
-
-		# # else:
-
-		# # 	# Create a directory for the individual chemiform network edge files.
-		# # 	#####################################################################
-		# # 	if not exists(self.outputDirectory + "chemiformNetworksReduced"):
-		# # 		mkdir(self.outputDirectory + "chemiformNetworksReduced")
-		# # 	else:
-		# # 		rmtree(self.outputDirectory + "chemiformNetworksReduced")
-		# # 		mkdir(self.outputDirectory + "chemiformNetworksReduced")
-
-		# # 	# Create a directory for the individual chemiform PDB files.
-		# # 	############################################################
-		# # 	if not exists(self.outputDirectory + "chemiformNodesReduced"):
-		# # 		mkdir(self.outputDirectory + "chemiformNodesReduced")
-		# # 	else:
-		# # 		rmtree(self.outputDirectory + "chemiformNodesReduced")
-		# # 		mkdir(self.outputDirectory + "chemiformNodesReduced")
-
-		# # # Unique repository for aggregating grid points.
-		# # ################################################
-		# # uniqueChemiformPoints = {}
-		# # uniqueNetworkEdgeStrings = {}
-
-		# # Prepare each network to be written to file.
-		# #############################################
-		# # Void networks first...
-		# ########################
-		# j, networkName = 1, "networkEdges"
-		# #networkString, resStrings, pdbString = "", "", ""
-		# for rankedVoidNetworksKey in rankedVoidNetworksKeys:
-
-		# 	networkString, resStrings, pdbString = "", "", ""
-
-		# 	# Unique repository for aggregating grid points.
-		# 	################################################
-		# 	uniqueChemiformPoints = {}
-		# 	uniqueNetworkEdgeStrings = {}
-
-		# 	voidNetwork = self.rankedVoidNetworks[rankedVoidNetworksKey]
-		# 	triangulation = self.voidNetworks[voidNetwork]
-
-		# 	# Indicate a new network stack in the file output.
-		# 	##################################################
-		# 	pdbString = "# Network " + str(j) + " Number of Nodes: " + str(len(voidNetwork)) + "\n"
-		# 	networkString += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-		# 	resStrings += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-
-		# 	# Original version...
-		# 	for node in voidNetwork:
-
-		# 		pruneS2s = {}
-		# 		for s2 in self.prunedVoidNetworkTriangulation[node].s2s:
-
-		# 			if s2[0] not in voidNetwork or s2[1] not in voidNetwork:
-		# 				continue
-
-		# 			# Network edge vertices.
-		# 			########################
-		# 			v1 = self.prunedVoidNetworkTriangulation[s2[0]].s1
-		# 			v2 = self.prunedVoidNetworkTriangulation[s2[1]].s1
-		# 			uniqueChemiformPoints[(v1.data.atom_serial, v1)] = v1
-		# 			uniqueChemiformPoints[(v2.data.atom_serial, v2)] = v2
-
-		# 			# Number each grid point atoms by its network.
-		# 			##############################################
-		# 			v1.data.residue_sequence_number, v2.data.residue_sequence_number = j, j
-
-		# 			# Format coordinates for writing (a bit redundant: could go with one).
-		# 			######################################################################
-		# 			format = "%15.6f%15.6f%15.6f "
-		# 			resCoords = format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-		# 			networkString += format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-		# 			resStringFormat = "%s-%i-%s"
-		# 			resString = "%13s %13s | " % (resStringFormat % (v1.data.residue.chn, v1.data.residue.num, v1.data.residue.name),
-		# 											resStringFormat % (v2.data.residue.chn, v2.data.residue.num, v2.data.residue.name))
-		# 			if resString not in uniqueNetworkEdgeStrings:
-		# 				uniqueNetworkEdgeStrings[resString] = resString + resCoords
-		# 			resStrings += resString + resCoords
-
-		# 	if uniqueChemiformPoints:
-
-		# 		uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-		# 		conectString = ""
-		# 		for uniqueGridPointKey in uniqueGridPointKeys:
-		# 			v = uniqueGridPointKey[1]
-		# 			conectString += "%-6s%5i" % ("CONECT", v.data.atom_serial)
-		# 			for s2 in self.prunedVoidNetworkTriangulation[v.id].s2s:
-		# 				for vid in s2:
-		# 					if vid != v.id:
-		# 						vConect = self.prunedVoidNetworkTriangulation[vid]
-		# 						conectString += "%5i" % vConect.s1.data.atom_serial
-		# 			conectString += "\n"
-
-		# 		uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-		# 		pdbString = "# Network " + str(j) + " Size: " + str(len(uniqueGridPointKeys)) + "\n"
-		# 		resNum = 1
-		# 		for uniqueGridPointKey in uniqueGridPointKeys:
-		# 			atom = uniqueChemiformPoints[uniqueGridPointKey].data
-		# 			atom.record_name = "HETATM"
-		# 			atom.atom_name = " C"
-		# 			atom.residue_sequence_number = resNum
-		# 			atom.element_symbol = "C"
-		# 			pdbString += str(uniqueChemiformPoints[uniqueGridPointKey].data)
-		# 			resNum += 1
-
-		# 		output = open(self.outputDirectory + "chemiformNodes/" + self.pdbCode + ".nodes." + str(j) + ".pdb", "w")
-		# 		output.write(pdbString)
-		# 		output.write(conectString)
-		# 		output.close()
-
-		# 	if uniqueNetworkEdgeStrings:
-
-		# 		uniqueResStringKeys = sorted(uniqueNetworkEdgeStrings)
-		# 		resString = "# Network " + str(j) + " Size: " + str(len(uniqueNetworkEdgeStrings)) + "\n"
-		# 		for uniqueResStringKey in uniqueResStringKeys:
-		# 			resString += str(uniqueNetworkEdgeStrings[uniqueResStringKey])
-
-		# 		output = gzip.open(self.outputDirectory + "chemiformNetworks/" + self.pdbCode + ".network." + str(j) + ".txt.gz", "wt")
-		# 		output.write(resString)
-		# 		output.close()
-
-		# 	# Indicate the end of a network stack with a blank line.
-		# 	########################################################
-		# 	networkString += "\n"
-
-		# 	j += 1
-
-	# def reduceChemiformsIteration(self, voidNetworks, prunedVoidNetworkTriangulation, psa=0):
-
-	# 	# Arrange networks from largest to smallest...
-	# 	# Maybe not necessary...
-	# 	rankedVoidNetworks = {}
-	# 	for voidNetwork in voidNetworks:
-	# 		rankedVoidNetworks[(len(voidNetwork), voidNetwork)] = voidNetwork
-	# 	rankedVoidNetworksKeys = sorted(rankedVoidNetworks)
-	# 	rankedVoidNetworksKeys.reverse()
-		
-	# 	# Collect all vertices from all of the void networks...
-	# 	removeChemiformVertices, uniqueChemiformVertices, reducedVoidNetworkNodes = {}, {}, {}
-	# 	for rankedVoidNetworksKey in rankedVoidNetworksKeys:
-
-	# 		voidNetwork = rankedVoidNetworks[rankedVoidNetworksKey]
-
-	# 		# Original version...
-	# 		for node in voidNetwork:
-
-	# 			for s2 in prunedVoidNetworkTriangulation[node].s2s:
-
-	# 				# Network edge vertices...
-	# 				v1 = prunedVoidNetworkTriangulation[s2[0]].s1
-	# 				v2 = prunedVoidNetworkTriangulation[s2[1]].s1
-	# 				# Save all network edge vertices...
-	# 				uniqueChemiformVertices[(v1.data.atom_serial, v1)] = v1
-	# 				uniqueChemiformVertices[(v2.data.atom_serial, v2)] = v2
-	# 				# Flag those network edge vertices that are "too close to one another"...
-	# 				d = distance(v1, v2)
-	# 				if d < 1.1:
-	# 					removeChemiformVertices[(v1.data.atom_serial, v1)] = v1
-	# 					break
-
-	# 	# Proceed with removing network edge vertices that are "too close to one another"...
-	# 	# Vertex distancing...
-	# 	print("Size of unique vertex list before removal...", len(uniqueChemiformVertices))
-	# 	for removeChemiformVertex in removeChemiformVertices:
-	# 		del uniqueChemiformVertices[removeChemiformVertex]
-	# 	print("Size of unique vertex list after removal...", len(uniqueChemiformVertices))
-
-	# 	# Triangulate the reduced set of unique chemiform vertices...
-	# 	reducedVoidNetworkMesh = convexHull4D(uniqueChemiformVertices.values())
-	# 	reducedVoidNetworkTriangulation = reducedVoidNetworkMesh.s1Dict
-	# 	prunedReducedVoidNetworkTriangulationResult = pruneTriangulationGoFo(reducedVoidNetworkTriangulation, 1.5, psa=psa)#self.maxVoidNetworkEdgeLength)
-	# 	prunedReducedVoidNetworkTriangulation = prunedReducedVoidNetworkTriangulationResult[0]
-	# 	prunedReducedVoidNetworks = prunedReducedVoidNetworkTriangulationResult[2]
-
-	# 	# Iteratively minimize the pruned triangulation.
-	# 	# Remove redundant network connections by biasing shorter network edges....
-	# 	minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation)
-	# 	reducedVoidNetworks = getFinalMinimizedNetworks(prunedReducedVoidNetworks)
-
-	# 	# i = 1
-	# 	# previousResult = None
-	# 	# # XXXX minimizeNetworks need to update
-	# 	# minimizing = minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# while minimizing:
-	# 	# 	minimizing = minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# 	previousResult = minimizing
-	# 	# 	i += 1
-	# 	# reducedVoidNetworks = prunedReducedVoidNetworks
-
-	# 	return (reducedVoidNetworks, prunedReducedVoidNetworkTriangulation, removeChemiformVertices)
-
-
-	# def reduceChemiforms(self, psa=0):
-
-	# 	# Create a directory for the individual chemiform network edge files.
-	# 	#####################################################################
-	# 	if not exists(self.outputDirectory + "chemiformNetworksReduced"):
-	# 		mkdir(self.outputDirectory + "chemiformNetworksReduced")
-	# 	else:
-	# 		rmtree(self.outputDirectory + "chemiformNetworksReduced")
-	# 		mkdir(self.outputDirectory + "chemiformNetworksReduced")
-
-	# 	# Create a directory for the individual chemiform PDB files.
-	# 	############################################################
-	# 	if not exists(self.outputDirectory + "chemiformNodesReduced"):
-	# 		mkdir(self.outputDirectory + "chemiformNodesReduced")
-	# 	else:
-	# 		rmtree(self.outputDirectory + "chemiformNodesReduced")
-	# 		mkdir(self.outputDirectory + "chemiformNodesReduced")
-
-	# 	removeChemiformVertices, rcvIteraction = 1, 1
-	# 	reducedVoidNetworks, prunedReducedVoidNetworkTriangulation = self.voidNetworks, self.prunedVoidNetworkTriangulation
-	# 	while removeChemiformVertices:
-	# 		print("Remove chemiform vertices...iteration...", rcvIteraction)
-	# 		reduceIteration = self.reduceChemiformsIteration(reducedVoidNetworks, prunedReducedVoidNetworkTriangulation, psa=psa)
-	# 		reducedVoidNetworks = reduceIteration[0]
-	# 		prunedReducedVoidNetworkTriangulation = reduceIteration[1]
-	# 		removeChemiformVertices = reduceIteration[2]
-	# 		rcvIteraction += 1
-
-	# 	# Arrange networks from largest to smallest.
-	# 	############################################
-	# 	rankedVoidNetworks = {}
-	# 	for voidNetwork in reducedVoidNetworks:
-	# 		rankedVoidNetworks[(len(voidNetwork), voidNetwork)] = voidNetwork
-	# 	rankedVoidNetworksKeys = sorted(rankedVoidNetworks)
-	# 	rankedVoidNetworksKeys.reverse()
-
-	# 	###################################################################
-	# 	# # Only for testing..........XXXX
-	# 	# testDirectory = "/Users/danisom/Desktop/chemiTest/"
-	# 	# if not exists(testDirectory):
-	# 	# 	mkdir(testDirectory)
-	# 	# else:
-	# 	# 	rmtree(testDirectory) 
-	# 	# 	mkdir(testDirectory)
-	# 	# # Only for testing..........XXXX
-	# 	###################################################################
-
-	# 	# Prepare each network to be written to file.
-	# 	#############################################
-	# 	# Void networks first...
-	# 	########################
-	# 	j, networkName = 1, "networkEdges"
-	# 	for rankedVoidNetworksKey in rankedVoidNetworksKeys:
-
-	# 		networkString, resStrings, pdbString = "", "", ""
-
-	# 		# Unique repository for aggregating grid points.
-	# 		################################################
-	# 		uniqueChemiformPoints = {}
-	# 		uniqueNetworkEdgeStrings = {}
-
-	# 		voidNetwork = rankedVoidNetworks[rankedVoidNetworksKey]
-
-	# 		if len(voidNetwork) < 3:
-	# 			continue
-
-	# 		###################################################################
-	# 		# # # Only for testing..........XXXX
-
-	# 		# # Start the goFo collection from the highest degree network node...
-	# 		# # Starting from a node of highest degree may result in unexpected goFo leveling...
-	# 		# # I think this unexpected leveling occurs when goFo starts in a cycle loop...
-	# 		# nStart, nDegree = None, 0
-	# 		# byDegree, nodes = {}, []
-	# 		# for node in voidNetwork:
-	# 		# 	iDegree = len(prunedReducedVoidNetworkTriangulation[node].s2s)
-	# 		# 	byDegree[(iDegree,node)] = node
-	# 		# 	nodes.append(prunedReducedVoidNetworkTriangulation[node].s1)
-	# 		# psa = PseudoAtom()
-	# 		# nodeCentroid = centroid3D(nodes, psa)
-	# 		# byDegreeKeys = sorted(byDegree.keys())
-	# 		# lowestDegree = byDegreeKeys[0][0]
-	# 		# nStart, dCom, nDegree = None, 0., 0
-	# 		# for byDegreeKey in byDegreeKeys:
-	# 		# 	if byDegreeKey[0] == lowestDegree:
-	# 		# 		d = distance(nodeCentroid, prunedReducedVoidNetworkTriangulation[byDegreeKey[1]].s1)
-	# 		# 		if d > dCom:
-	# 		# 			nStart = byDegreeKey[1]
-	# 		# 			dCom = d
-	# 		# 			nDegree = byDegreeKey[0]
-
-	# 		# print("\n\n start chemiform by level..."	)
-	# 		# print("Node", nStart, "Degree", nDegree)
-
-	# 		# #nStart = voidNetwork[0] # This selection might be key...
-	# 		# been = {}
-	# 		# s2s = prunedReducedVoidNetworkTriangulation[nStart].s2s
-	# 		# s1Dict = prunedReducedVoidNetworkTriangulation
-	# 		# goFo(nStart, been, s2s, s1Dict, level=1, byEdge=1)
-	# 		# beenKeys = sorted(been.keys())
-	# 		# byLevel = {}
-	# 		# for beenKey in beenKeys:
-	# 		# 	#print(beenKey, been[beenKey])
-	# 		# 	level = been[beenKey]
-	# 		# 	print("*", level, beenKey)
-	# 		# 	if level not in byLevel:
-	# 		# 		byLevel[level] = [beenKey]
-	# 		# 	else:
-	# 		# 		byLevel[level].append(beenKey)
-	# 		# # for level in sorted(byLevel.keys()):
-	# 		# # 	print(level, byLevel[level])
-
-	# 		# testDirectory = "/Users/danisom/Desktop/chemiTest/"
-	# 		# fileName = str(nStart) + ".pickle"
-	# 		# f = open(testDirectory + fileName, "w")
-	# 		# pickle.dump(been, f)
-	# 		# f.close()
-
-	# 		# # from graphs import Graph
-	# 		# # levelGraph = Graph()
-	# 		# # levelGraph.levels = byLevel
-	# 		# # levelGraph.makeGraph()
-
-	# 		# # # Only for testing..........XXXX
-	# 		# ###################################################################
-
-	# 		# Indicate a new network stack in the file output.
-	# 		##################################################
-	# 		pdbString = "# Network " + str(j) + " Number of Nodes: " + str(len(voidNetwork)) + "\n"
-	# 		networkString += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-	# 		resStrings += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-
-	# 		# Original version...
-	# 		for node in voidNetwork:
-
-	# 			for s2 in prunedReducedVoidNetworkTriangulation[node].s2s:
-
-	# 				# Network edge vertices.
-	# 				########################
-	# 				v1 = prunedReducedVoidNetworkTriangulation[s2[0]].s1
-	# 				v2 = prunedReducedVoidNetworkTriangulation[s2[1]].s1
-	# 				uniqueChemiformPoints[(v1.data.atom_serial, v1)] = v1
-	# 				uniqueChemiformPoints[(v2.data.atom_serial, v2)] = v2
-
-	# 				# Number each grid point atoms by its network.
-	# 				##############################################
-	# 				v1.data.residue_sequence_number, v2.data.residue_sequence_number = j, j
-
-	# 				# Format coordinates for writing (a bit redundant: could go with one).
-	# 				######################################################################
-	# 				format = "%15.6f%15.6f%15.6f "
-	# 				resCoords = format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-	# 				networkString += format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-	# 				resStringFormat = "%s-%i-%s"
-	# 				resString = "%13s %13s | " % (resStringFormat % (v1.data.residue.chn, v1.data.residue.num, v1.data.residue.name),
-	# 												resStringFormat % (v2.data.residue.chn, v2.data.residue.num, v2.data.residue.name))
-	# 				if resString not in uniqueNetworkEdgeStrings:
-	# 					uniqueNetworkEdgeStrings[resString] = resString + resCoords
-	# 				resStrings += resString + resCoords
-	# 		if uniqueChemiformPoints:
-
-	# 			uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-	# 			conectString = ""
-	# 			for uniqueGridPointKey in uniqueGridPointKeys:
-	# 				v = uniqueGridPointKey[1]
-	# 				conectString += "%-6s%5i" % ("CONECT", v.data.atom_serial)
-	# 				for s2 in prunedReducedVoidNetworkTriangulation[v.id].s2s:
-	# 					for vid in s2:
-	# 						if vid != v.id:
-	# 							vConect = prunedReducedVoidNetworkTriangulation[vid]
-	# 							conectString += "%5i" % vConect.s1.data.atom_serial
-	# 				conectString += "\n"
-
-
-	# 			uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-	# 			pdbString = "# Network " + str(j) + " Size: " + str(len(uniqueGridPointKeys)) + "\n"
-	# 			resNum = 1
-	# 			for uniqueGridPointKey in uniqueGridPointKeys:
-	# 				atom = uniqueChemiformPoints[uniqueGridPointKey].data
-	# 				atom.record_name = "HETATM"
-	# 				atom.atom_name = " C"
-	# 				atom.residue_sequence_number = resNum
-	# 				atom.element_symbol = "C"
-	# 				pdbString += str(uniqueChemiformPoints[uniqueGridPointKey].data)
-	# 				resNum += 1
-
-	# 			output = open(self.outputDirectory + "chemiformNodesReduced/" + self.pdbCode + ".nodes." + str(j) + ".pdb", "w")
-	# 			output.write(pdbString)
-	# 			output.write(conectString)
-	# 			output.close()
-
-	# 		if uniqueNetworkEdgeStrings:
-
-	# 			uniqueResStringKeys = sorted(uniqueNetworkEdgeStrings)
-	# 			resString = "# Network " + str(j) + " Size: " + str(len(uniqueNetworkEdgeStrings)) + "\n"
-	# 			for uniqueResStringKey in uniqueResStringKeys:
-	# 				resString += str(uniqueNetworkEdgeStrings[uniqueResStringKey])
-
-	# 			output = gzip.open(self.outputDirectory + "chemiformNetworksReduced/" + self.pdbCode + ".network." + str(j) + ".txt.gz", "wt")
-	# 			output.write(resString)
-	# 			output.close()
-
-	# 		# Indicate the end of a network stack with a blank line.
-	# 		########################################################
-	# 		networkString += "\n"
-
-	# 		j += 1
-
-	# def identifyAndParseIndividualSamplingVoidsReduced(self):
-
-	# 	# Use pruneTriangulationGoFo to identify sub-networks within the void sampling network
-
-	# 	print("Start -- identifyAndParseIndividualSamplingVoids...",)
-
-	# 	# carbon-carbon bond lengths
-	# 	# single : 1.54 Angstroms
-	# 	# double : 1.33 Angstroms
-	# 	# triple : 1.20 Angstroms
-	# 	#########################
-
-	# 	# Prune the global triangulation of void sampling points.
-	# 	# This function includes a goFo step that splits the global triangulation into sub-networks.
-	# 	############################################################################################
-	# 	prunedVoidNetworkTriangulation = deepcopy(self.gridPointTriangulation) # Key feature.
-	# 	prunedVoidNetworkTriangulationResult = pruneTriangulationGoFo(prunedVoidNetworkTriangulation, self.maxVoidNetworkEdgeLength)
-	# 	self.prunedVoidNetworkTriangulation = prunedVoidNetworkTriangulationResult[0]
-	# 	self.prunedVoidNetworks = prunedVoidNetworkTriangulationResult[2]
-
-	# 	# Iteratively minimize the pruned triangulation.
-	# 	# Remove redundant network connections by biasing shorter network edges.
-	# 	########################################################################
-	# 	minimizeNetworks(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation)
-	# 	self.voidNetworks = getFinalMinimizedNetworks(self.prunedVoidNetworks)
-	# 	writeNetworkToFile(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation, "voidNetworks", self.outputDirectory, self.pdbCode)
-
-	# 	# i = 1
-	# 	# previousResult = None
-	# 	# # XXXX minimizeNetworks need to update
-	# 	# minimizing = minimizeNetworks(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# while minimizing:
-	# 	# 	minimizing = minimizeNetworks(self.prunedVoidNetworks, self.prunedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# 	previousResult = minimizing
-	# 	# 	i += 1
-	# 	# self.voidNetworks = self.prunedVoidNetworks
-
-	# 	# # Arrange networks from largest to smallest.
-	# 	# ############################################
-	# 	# self.rankedVoidNetworks = {}
-	# 	# for voidNetwork in self.voidNetworks:
-	# 	# 	self.rankedVoidNetworks[(len(voidNetwork), voidNetwork)] = voidNetwork
-	# 	# rankedVoidNetworksKeys = sorted(self.rankedVoidNetworks)
-	# 	# rankedVoidNetworksKeys.reverse()
-
-	# 	# # Create a directory for the individual chemiform network edge files.
-	# 	# #####################################################################
-	# 	# if not exists(self.outputDirectory + "chemiformNetworksReduced"):
-	# 	# 	mkdir(self.outputDirectory + "chemiformNetworksReduced")
-	# 	# else:
-	# 	# 	rmtree(self.outputDirectory + "chemiformNetworksReduced")
-	# 	# 	mkdir(self.outputDirectory + "chemiformNetworksReduced")
-
-	# 	# # Create a directory for the individual chemiform PDB files.
-	# 	# ############################################################
-	# 	# if not exists(self.outputDirectory + "chemiformNodesReduced"):
-	# 	# 	mkdir(self.outputDirectory + "chemiformNodesReduced")
-	# 	# else:
-	# 	# 	rmtree(self.outputDirectory + "chemiformNodesReduced")
-	# 	# 	mkdir(self.outputDirectory + "chemiformNodesReduced")
-
-	# 	# # Prepare each network to be written to file.
-	# 	# #############################################
-	# 	# # Void networks first...
-	# 	# ########################
-	# 	# j, networkName = 1, "networkEdges"
-	# 	# networkString, resStrings, pdbString = "", "", ""
-	# 	# for rankedVoidNetworksKey in rankedVoidNetworksKeys:
-
-	# 	# 	voidNetwork = self.rankedVoidNetworks[rankedVoidNetworksKey]
-	# 	# 	triangulation = self.voidNetworks[voidNetwork]
-
-	# 	# 	# Indicate a new network stack in the file output.
-	# 	# 	##################################################
-	# 	# 	pdbString = "# Network " + str(j) + " Number of Nodes: " + str(len(voidNetwork)) + "\n"
-	# 	# 	networkString += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-	# 	# 	resStrings += "# Network " + str(j) + " Size: " + str(len(voidNetwork)) + "\n"
-
-	# 	# 	### Start new...could be deleted with no consequences...
-
-	# 	# 	# Iteratively reduce the void network nodes to create more compound-like chemiforms...
-	# 	# 	reducing, loseNodes, reducedVoidNetworkNodes, n = 1, {}, {}, 1
-	# 	# 	while reducing:
-	# 	# 		print("Void reduction round", n, len(reducedVoidNetworkNodes))
-	# 	# 		reducing, reducedVoidNetworkNodes = 0, {}
-	# 	# 		for node in voidNetwork:
-
-	# 	# 			if node in loseNodes:
-	# 	# 				continue
-
-	# 	# 			# for s2 in self.gridPointTriangulation[node].s2s:
-	# 	# 			#for s2 in triangulation[node].s2s:
-	# 	# 			pruneNodes = []
-	# 	# 			for s2 in self.prunedVoidNetworkTriangulation[node].s2s:
-
-	# 	# 				if s2[0] not in voidNetwork or s2[1] not in voidNetwork:
-	# 	# 					continue
-
-	# 	# 				# Network edge vertices.
-	# 	# 				########################
-	# 	# 				v1 = self.prunedVoidNetworkTriangulation[s2[0]].s1
-	# 	# 				v2 = self.prunedVoidNetworkTriangulation[s2[1]].s1
-
-	# 	# 				# Keep original nodes...
-	# 	# 				d = distance(v1, v2)
-	# 	# 				if d >= 1.0:
-	# 	# 					reducedVoidNetworkNodes[(v1.x, v1.y, v1.z, v1.u)] = v1
-	# 	# 					reducedVoidNetworkNodes[(v2.x, v2.y, v2.z, v2.u)] = v2
-	# 	# 				else:
-	# 	# 					# Lose the nodes...
-	# 	# 					print("less than 1.0......")
-	# 	# 					reducing = 1
-	# 	# 					loseNodes[v1] = None
-	# 	# 					loseNodes[v2] = None
-	# 	# 					pruneNodes.append(v2)
-
-	# 	# 					nodeCom = centroid4D([v1, v2], v1.data) # Use v1 as the PSA...
-	# 	# 					nodeCom.id = v1.id
-	# 	# 					reducedVoidNetworkNodes[(nodeCom.x, nodeCom.y, nodeCom.z, nodeCom.u)] = nodeCom
-	# 	# 					self.prunedVoidNetworkTriangulation[s2[0]].s1 = nodeCom # Alters the pruned triangulation....
-
-	# 	# 					# In the case the node was saved because although it's in this "short" network edge, it is also coincident in at least one "long" network edge...
-	# 	# 					if (v1.x, v1.y, v1.z, v1.u) in reducedVoidNetworkNodes:
-	# 	# 						del reducedVoidNetworkNodes[(v1.x, v1.y, v1.z, v1.u)]
-	# 	# 					if (v2.x, v2.y, v2.z, v2.u) in reducedVoidNetworkNodes:
-	# 	# 						del reducedVoidNetworkNodes[(v2.x, v2.y, v2.z, v2.u)]
-				
-	# 	# 			# Reduces and alters the pruned triangulation....
-	# 	# 			pruneS2s = {}
-	# 	# 			for pruneNode in pruneNodes:
-	# 	# 				for s2 in self.prunedVoidNetworkTriangulation[node].s2s:
-	# 	# 					if pruneNode.id in s2:
-	# 	# 						pruneS2s[s2] = pruneNode
-	# 	# 			for pruneS2 in pruneS2s:
-	# 	# 				self.prunedVoidNetworkTriangulation[node].s2s.remove(pruneS2)
-
-	# 	# 		if reducing:
-	# 	# 			n += 1
-
-	# 	# 	print("Number of reducedVoidNetworkNodes", len(reducedVoidNetworkNodes.values()), self.maxVoidNetworkEdgeLength)
-	# 	# 	#Not enough nodes to calculate a triangulation...
-	# 	# 	if len(reducedVoidNetworkNodes) < 6:
-	# 	# 		continue
-	# 	# 	reducedVoidNetworkMesh = convexHull4D(reducedVoidNetworkNodes.values())
-	# 	# 	reducedVoidNetworkTriangulation = reducedVoidNetworkMesh.s1Dict
-	# 	# 	# Chemiform size is very sensitive to the second argument: maxVoidNetworkEdgeLength: 2.0 seems like a good general value
-	# 	# 	prunedReducedVoidNetworkTriangulationResult = pruneTriangulationGoFo(reducedVoidNetworkTriangulation, 2.0)
-	# 	# 	prunedReducedVoidNetworkTriangulation = prunedReducedVoidNetworkTriangulationResult[0]
-	# 	# 	prunedReducedVoidNetworks = prunedReducedVoidNetworkTriangulationResult[2]
-
-	# 	# 	# Iteratively minimize the pruned triangulation.
-	# 	# 	# Remove redundant network connections by biasing shorter network edges.
-	# 	# 	########################################################################
-	# 	# 	minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation)
-	# 	# 	reducedVoidNetworks = getFinalMinimizedNetworks(prunedReducedVoidNetworks)
-
-	# 	# 	# i = 1
-	# 	# 	# previousResult = None
-	# 	# 	# # XXXX minimizeNetworks need to update
-	# 	# 	# minimizing = minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# 	# while minimizing:
-	# 	# 	# 	minimizing = minimizeNetworks(prunedReducedVoidNetworks, prunedReducedVoidNetworkTriangulation, previousResult=previousResult, allowSymmetryLoops=1)
-	# 	# 	# 	previousResult = minimizing
-	# 	# 	# 	i += 1
-	# 	# 	# reducedVoidNetworks = prunedReducedVoidNetworks
-
-	# 	# 	for reducedVoidNetwork in reducedVoidNetworks:
-
-	# 	# 		# Unique repository for aggregating grid points.
-	# 	# 		################################################
-	# 	# 		uniqueChemiformPoints = {}
-	# 	# 		uniqueNetworkEdgeStrings = {}
-
-	# 	# 		for node in reducedVoidNetwork:
-
-	# 	# 			for s2 in prunedReducedVoidNetworkTriangulation[node].s2s:
-
-	# 	# 				if s2[0] not in reducedVoidNetwork or s2[1] not in reducedVoidNetwork:
-	# 	# 					continue
-
-	# 	# 				# Network edge vertices.
-	# 	# 				########################
-	# 	# 				v1 = prunedReducedVoidNetworkTriangulation[s2[0]].s1
-	# 	# 				uniqueChemiformPoints[(v1.data.atom_serial, v1)] = v1
-	# 	# 				v2 = prunedReducedVoidNetworkTriangulation[s2[1]].s1
-	# 	# 				uniqueChemiformPoints[(v2.data.atom_serial, v2)] = v2
-
-	# 	# 				print("Chemiform edge distance:", distance(v1, v2))
-
-	# 	# 				# Number each grid point atoms by its network.
-	# 	# 				##############################################
-	# 	# 				v1.data.residue_sequence_number, v2.data.residue_sequence_number = j, j
-
-	# 	# 				# Format coordinates for writing (a bit redundant: could go with one).
-	# 	# 				######################################################################
-	# 	# 				format = "%15.6f%15.6f%15.6f "
-	# 	# 				resCoords = format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-	# 	# 				networkString += format % (v1.x,v1.y,v1.z) + format % (v2.x,v2.y,v2.z) + "\n"
-	# 	# 				resStringFormat = "%s-%i-%s"
-	# 	# 				resString = "%13s %13s | " % (resStringFormat % (v1.data.residue.chn, v1.data.residue.num, v1.data.residue.name),
-	# 	# 												resStringFormat % (v2.data.residue.chn, v2.data.residue.num, v2.data.residue.name))
-	# 	# 				if resString not in uniqueNetworkEdgeStrings:
-	# 	# 					uniqueNetworkEdgeStrings[resString] = resString + resCoords
-	# 	# 				resStrings += resString + resCoords
-
-	# 	# 		if uniqueChemiformPoints:
-
-	# 	# 			uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-	# 	# 			conectString = ""
-	# 	# 			for uniqueGridPointKey in uniqueGridPointKeys:
-	# 	# 				v = uniqueGridPointKey[1]
-	# 	# 				conectString += "%-6s%5i" % ("CONECT", v.data.atom_serial)
-	# 	# 				for s2 in prunedReducedVoidNetworkTriangulation[v.id].s2s:
-	# 	# 					for vid in s2:
-	# 	# 						if vid != v.id:
-	# 	# 							vConect = prunedReducedVoidNetworkTriangulation[vid]
-	# 	# 							conectString += "%5i" % vConect.s1.data.atom_serial
-	# 	# 				conectString += "\n"
-
-	# 	# 			uniqueGridPointKeys = sorted(uniqueChemiformPoints)
-	# 	# 			pdbString = "# Network " + str(j) + " Size: " + str(len(uniqueGridPointKeys)) + "\n"
-	# 	# 			resNum = 1
-	# 	# 			for uniqueGridPointKey in uniqueGridPointKeys:
-	# 	# 				atom = uniqueChemiformPoints[uniqueGridPointKey].data
-	# 	# 				atom.record_name = "HETATM"
-	# 	# 				atom.atom_name = " C"
-	# 	# 				atom.residue_sequence_number = resNum
-	# 	# 				atom.element_symbol = "C"
-	# 	# 				pdbString += str(uniqueChemiformPoints[uniqueGridPointKey].data)
-	# 	# 				resNum += 1
-
-	# 	# 			output = open(self.outputDirectory + "chemiformNodesReduced/" + self.pdbCode + ".nodes." + str(j) + ".pdb", "w")
-	# 	# 			output.write(pdbString)
-	# 	# 			output.write(conectString)
-	# 	# 			output.close()
-
-	# 	# 		if uniqueNetworkEdgeStrings:
-
-	# 	# 			uniqueResStringKeys = sorted(uniqueNetworkEdgeStrings)
-	# 	# 			resString = "# Network " + str(j) + " Size: " + str(len(uniqueNetworkEdgeStrings)) + "\n"
-	# 	# 			for uniqueResStringKey in uniqueResStringKeys:
-	# 	# 				resString += str(uniqueNetworkEdgeStrings[uniqueResStringKey])
-
-	# 	# 			output = gzip.open(self.outputDirectory + "chemiformNetworksReduced/" + self.pdbCode + ".network." + str(j) + ".txt.gz", "wt")
-	# 	# 			output.write(resString)
-	# 	# 			output.close()
-
-	# 	# 		# Indicate the end of a network stack with a blank line.
-	# 	# 		########################################################
-	# 	# 		networkString += "\n"
-
-	# 	# 	j += 1
-
-	# 	print("End -- identifyAndParseIndividualSamplingVoids...")
-		
-	# def identifyCreviceFacets(self, facetDistanceLimit=2.0):
-
-	# 	print("Start -- Identifying crevice facets in identifyCreviceFacets...")
-
-	# 	voidNetworkVertices = {}
-	# 	for voidNetwork in self.voidNetworks:
-
-	# 		triangulation = self.voidNetworks[voidNetwork]
-	# 		for node in voidNetwork:
-	# 			for s2 in triangulation[node].s2s:
-	# 				if s2[0] not in voidNetwork or s2[1] not in voidNetwork:
-	# 					continue
-
-	# 				# Network edge vertices.
-	# 				########################
-	# 				v1 = self.gridPointTriangulation[s2[0]].s1
-	# 				voidNetworkVertices[v1] = None
-	# 				v2 = self.gridPointTriangulation[s2[1]].s1
-	# 				voidNetworkVertices[v2] = None
-
-	# 	quadSurfaceByCentroid = {}
-	# 	for edgeKey in self.quadSurface:
-	# 		centroid = centroid4D([self.quadSurface[edgeKey].origin_vertex, self.quadSurface[edgeKey].destination_vertex], PseudoAtom())
-	# 		quadSurfaceByCentroid[edgeKey] = centroid
-			
-
-	# 	quadSurfaceCrevice = {}
-	# 	for v in voidNetworkVertices:
-	# 		for edgeKey in quadSurfaceByCentroid:
-	# 			centroid = quadSurfaceByCentroid[edgeKey]
-	# 			d = distance(v, centroid)
-	# 			if d < facetDistanceLimit:
-	# 				quadSurfaceCrevice[edgeKey] = self.quadSurface[edgeKey]
-	# 	self.quadSurfaceCrevice = quadSurfaceCrevice
-
-
-	# 	# Write crevice surface facets to file.
-	# 	#######################################
-	# 	surfaceFacetString = ""
-	# 	for edgeKey in self.quadSurfaceCrevice:
-	# 		lf = self.quadSurfaceCrevice[edgeKey].lf
-	# 		surfaceFacetString += s3StringOutput(lf.v1, lf.v2, lf.v3)
-	# 		rf = self.quadSurfaceCrevice[edgeKey].rf
-	# 		surfaceFacetString += s3StringOutput(rf.v1, rf.v2, rf.v3)
-	# 		centroid = quadSurfaceByCentroid[edgeKey]
-
-	# 	outputSurf = gzip.open(self.outputDirectory + "creviceSurface.txt.gz","wt")
-	# 	outputSurf.write(surfaceFacetString)
-	# 	outputSurf.close()
-
-	# 	print("End -- Identifying crevice facets in identifyCreviceFacets...")
 
 	def calculateSamplingVoidSurfaces(self, extend_sampling=False):
 

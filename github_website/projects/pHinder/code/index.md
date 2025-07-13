@@ -25,7 +25,7 @@ title: code
 
 # 🧬 pHinder: Structural Analysis Tools
 
-Welcome to the **pHinder** codebase. This folder contains Python code used in our lab's research for structural analysis, surface topology, and void detection of protein structures.
+Welcome to the **pHinder** codebase. This folder contains Python code used in our lab's research for protein structural analysis, sidechain topology and spatial classification, surface calculation, and void detection in protein structures for ligand/drug binding.
 
 ## ⚠️ Disclaimer
 

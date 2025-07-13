@@ -1,3 +1,10 @@
+---
+layout: default
+title: About
+---
+
+# Isom Lab Publications
+
 1. Kapolka NJ, Taghon GJ, ****Isom**** DG.. *Advances in yeast synthetic biology for human G protein-coupled receptor biology and pharmacology*. **Curr Opin Biotechnol**. 2024. Curr Opin Biotechnol. 2024 Aug;88:103176. doi: 10.1016/j.copbio.2024.103176. Epub 2024 Jul 29.. [doi:10.1016/j.copbio.2024.103176](https://doi.org/10.1016/j.copbio.2024.103176) PMID: [39079313](https://pubmed.ncbi.nlm.nih.gov/39079313)
 
 1. Wang D, Mahmud I, Thakur VS, Tan SK, ****Isom**** DG, Lombard DB, Gonzalgo ML, Kryvenko ON, Lorenzi PL, Tcheuyap VT, Brugarolas J, Welford SM.. *GPR1 and CMKLR1 Control Lipid Metabolism to Support the Development of Clear Cell Renal Cell Carcinoma*. **Cancer Res**. 2024. Cancer Res. 2024 Jul 2;84(13):2141-2154. doi: 10.1158/0008-5472.CAN-23-2926.. [doi:10.1158/0008-5472.CAN-23-2926](https://doi.org/10.1158/0008-5472.CAN-23-2926) PMID: [38640229](https://pubmed.ncbi.nlm.nih.gov/38640229)

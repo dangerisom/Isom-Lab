@@ -37,7 +37,7 @@ This is **research-grade code** provided for academic and exploratory purposes o
 
 ## 📥 Getting Started
 
-Once you have downloaded the `code/` folder:
+Once you have downloaded the files in the `code/` folder to a folder on your computer:
 
 1. Ensure you have Python 3.8+ installed.
 2. Install any necessary dependencies (see `requirements.txt` if provided).

@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-# Isom Lab Publications
+# 🧬 Isom Lab Publications
 
 1. Kapolka NJ, Taghon GJ, ****Isom**** DG.. *Advances in yeast synthetic biology for human G protein-coupled receptor biology and pharmacology*. **Curr Opin Biotechnol**. 2024. Curr Opin Biotechnol. 2024 Aug;88:103176. doi: 10.1016/j.copbio.2024.103176. Epub 2024 Jul 29.. [doi:10.1016/j.copbio.2024.103176](https://doi.org/10.1016/j.copbio.2024.103176) PMID: [39079313](https://pubmed.ncbi.nlm.nih.gov/39079313)
 

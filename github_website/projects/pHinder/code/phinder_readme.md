@@ -1,4 +1,9 @@
 ---
+layout: default
+title: pHinder Code
+---
+
+---
 
 # 🧬 pHinder: Structural Analysis Tools
 

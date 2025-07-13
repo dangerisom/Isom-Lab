@@ -4,3 +4,4 @@ theme: minima
 
 header_pages:        # Only these pages will appear in the header
   - about.md       # Or whichever pages you actually want in the nav
+  - publications.md

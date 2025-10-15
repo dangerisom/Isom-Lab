@@ -25,4 +25,3 @@ If you want your visitors to jump straight into the code organization, here’s 
 - [4-colocalization_quantitation](./code/4-colocalization_quantitation/)
 - [5-python_wrappers](./code/5-python_wrappers/)
 
-Each folder contains its own `index.md` file describing the scripts and their purpose.

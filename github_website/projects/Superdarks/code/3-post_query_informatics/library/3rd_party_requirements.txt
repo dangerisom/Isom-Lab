@@ -1,0 +1,4 @@
+Bio
+mmseqs
+numpy
+tqdm

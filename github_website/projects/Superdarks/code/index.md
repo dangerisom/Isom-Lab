@@ -1,33 +1,16 @@
 ---
+title: Superdarks • Code Modules
 layout: default
-title: code
 ---
 
-<ul>
-{% assign this_folder = 'github_website/projects/Superdarks/code/' %}
-{% assign github_repo_base = 'https://github.com/dangerisom/Isom-Lab/blob/main/' %}
+# Superdarks — Code Modules
 
-{% assign subdirs = "" | split: "" %}
+Select a module to browse its scripts and notes:
 
-{% for file in site.static_files %}
-  {% assign path = file.path | remove_first: '/' %}
-  {% if path contains this_folder %}
-    {% assign rel_path = path | remove_first: this_folder %}
-    {% assign parts = rel_path | split: '/' %}
-    {% if parts.size > 1 %}
-      {% assign subdir = parts[0] %}
-      {% unless subdirs contains subdir %}
-        {% assign subdirs = subdirs | push: subdir %}
-      {% endunless %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
+- [1-query_code](./1-query_code/)
+- [2-post_query_analysis](./2-post_query_analysis/)
+- [3-post_query_informatics](./3-post_query_informatics/)
+- [4-colocalization_quantitation](./4-colocalization_quantitation/)
+- [5-python_wrappers](./5-python_wrappers/)
 
-{% assign sorted_subdirs = subdirs | sort %}
-
-{% for folder in sorted_subdirs %}
-  <li>
-    📁 <a href="{{ github_repo_base }}{{ this_folder }}{{ folder }}/" target="_blank">{{ folder }}</a>
-  </li>
-{% endfor %}
-</ul>
+> Tip: Each folder should contain its own `index.md` so GitHub Pages renders a page when you click through.

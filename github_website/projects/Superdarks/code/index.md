@@ -1,7 +1,7 @@
 ---
 title: Code
 layout: default
-permalink: /projects/Superdarks/code/
+permalink: github_website/projects/Superdarks/code/
 ---
 
 # Project Code Folders

@@ -1,6 +1,7 @@
 ---
 layout: default
-title: data
+title: pHinder data
+permalink: /projects/pHinder/data/
 ---
 
 <ul>

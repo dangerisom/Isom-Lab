@@ -1,6 +1,7 @@
 ---
 layout: default
-title: data
+title: Superdarks data
+permalink: /projects/Superdarks/data/
 ---
 
 <ul>

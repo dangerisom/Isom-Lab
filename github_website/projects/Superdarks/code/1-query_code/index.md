@@ -4,7 +4,7 @@ title: 1_query_code
 ---
 
 <ul>
-{% assign this_folder = 'github_website/projects/Superdarks/code/1_query_code' %}
+{% assign this_folder = 'github_website/projects/Superdarks/code/1-query_code' %}
 {% assign github_repo_base = 'https://github.com/dangerisom/Isom-Lab/blob/main/' %}
 {% for file in site.static_files %}
   {% assign path = file.path | remove_first: '/' %}
@@ -19,3 +19,4 @@ title: 1_query_code
   {% endif %}
 {% endfor %}
 </ul>
+

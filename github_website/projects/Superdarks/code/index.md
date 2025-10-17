@@ -2,7 +2,8 @@
 title: Code
 layout: default
 permalink: /projects/Superdarks/code/
-# Set this to THIS folder’s absolute site path (leading and trailing slashes)
+# IMPORTANT: If your repo keeps these under a folder named "github_website",
+# change root below to /github_website/projects/Superdarks/code/
 root: /projects/Superdarks/code/
 ---
 
@@ -14,9 +15,7 @@ Below are the immediate subfolders and files under `{{ page.root }}`.
 {% assign files_under = site.static_files | where_exp: "f", "f.path contains root" %}
 {% assign pages_under = site.pages | where_exp: "p", "p.path != page.path and p.path contains root" %}
 
-{%- comment -%}
-Collect immediate subfolder names (from static files and pages)
-{%- endcomment -%}
+{%- comment -%} Collect immediate subfolder names {%- endcomment -%}
 {% assign subfolder_blob = "" %}
 {% for f in files_under %}
   {% assign rel = f.path | remove_first: root %}
@@ -34,9 +33,7 @@ Collect immediate subfolder names (from static files and pages)
 {% endfor %}
 {% assign subfolders = subfolder_blob | split: "|" | uniq | sort %}
 
-{%- comment -%}
-Collect immediate files (top-level, no slash after root)
-{%- endcomment -%}
+{%- comment -%} Collect immediate top-level files {%- endcomment -%}
 {% assign topfiles_blob = "" %}
 {% for f in files_under %}
   {% assign rel = f.path | remove_first: root %}
@@ -56,7 +53,9 @@ _No subfolders found._
 <ul>
   {% for name in subfolders %}
     {% if name != "" %}
-      <li><a href="{{ root | append: name | append: '/' | relative_url }}">{{ name }}</a></li>
+      <li>
+        <a href="{{ root | append: name | append: '/' | relative_url }}">{{ name }}</a>
+      </li>
     {% endif %}
   {% endfor %}
 </ul>
@@ -68,7 +67,7 @@ _No files in this folder._
 {% else %}
 <ul>
   {% for fname in topfiles %}
-    {% assign url = (root | append: fname) | relative_url %}
+    {% assign url = root | append: fname | relative_url %}
     <li>
       <a href="{{ url }}">{{ fname }}</a>
       {% assign ext = fname | split: "." | last | downcase %}

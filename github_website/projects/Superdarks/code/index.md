@@ -8,37 +8,42 @@ permalink: /projects/Superdarks/code/
 
 Below are the code sections. Click a folder to view its contents.
 
-{% assign here = page.dir %}
+{%- comment -%}
+Use page.url as the canonical base. Emulate "startsWith" via slice compare.
+This lists *immediate* subfolders under /projects/Superdarks/code/.
+Works even if a subfolder has no index.md.
+{%- endcomment -%}
+{% assign base = page.url %}
 
 {%- comment -%}
-Gather pages under this directory (but not the directory itself).
-Use 'contains' instead of 'startswith' for GitHub Pages compatibility.
+Collect pages under base (exclude the base itself)
 {%- endcomment -%}
-{% assign under_pages = site.pages | where_exp: "p", "p.dir != here and p.dir contains here" %}
+{% assign under_pages = site.pages
+  | where_exp: "p", "(p.url | slice: 0, base.size) == base and p.url != base" %}
 
 {%- comment -%}
-Gather static files whose *directory* is under this directory.
-We derive each file's directory with (f.path | remove: f.name).
+Collect static files under base (exclude the base itself)
+For each file, work with its directory path = f.path without filename.
 {%- endcomment -%}
-{% assign under_files = site.static_files 
-  | where_exp: "f", "(f.path | remove: f.name) != here and (f.path | remove: f.name) contains here" %}
+{% assign under_files = site.static_files
+  | where_exp: "f", "((f.path | slice: 0, base.size) == base) and f.path != base" %}
 
 {%- comment -%}
-From pages: take the first segment after 'here'.
+Get first segment after base for pages (using url)
 {%- endcomment -%}
-{% assign page_groups = under_pages 
-  | group_by_exp: "p", "p.dir | remove_first: here | split: '/' | first" %}
+{% assign page_groups = under_pages
+  | group_by_exp: "p", "p.url | remove_first: base | split: '/' | first" %}
 {% assign names_from_pages = page_groups | map: "name" %}
 
 {%- comment -%}
-From files: use each file's directory (path minus filename), then take the first segment after 'here'.
+Get first segment after base for files (using directory path)
 {%- endcomment -%}
-{% assign file_groups = under_files 
-  | group_by_exp: "f", "(f.path | remove: f.name) | remove_first: here | split: '/' | first" %}
+{% assign file_groups = under_files
+  | group_by_exp: "f", "(f.path | remove: f.name) | remove_first: base | split: '/' | first" %}
 {% assign names_from_files = file_groups | map: "name" %}
 
 {%- comment -%}
-Combine, remove blanks, uniq, and sort.
+Combine, clean, uniq, sort
 {%- endcomment -%}
 {% assign all_names = names_from_pages | concat: names_from_files %}
 {% assign cleaned = "" | split: "" %}
@@ -51,11 +56,11 @@ Combine, remove blanks, uniq, and sort.
 {% assign subfolders = cleaned | uniq | sort %}
 
 {% if subfolders.size == 0 %}
-_No subfolders found._
+_No subfolders found under {{ base }}._
 {% else %}
 <ul>
   {% for name in subfolders %}
-    {% assign subdir = here | append: name | append: "/" %}
+    {% assign subdir = base | append: name | append: "/" %}
     <li>📁 <a href="{{ subdir | relative_url }}">{{ name }}/</a></li>
   {% endfor %}
 </ul>

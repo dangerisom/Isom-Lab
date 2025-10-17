@@ -2,66 +2,80 @@
 title: Code
 layout: default
 permalink: /projects/Superdarks/code/
+# Set this to THIS folder’s absolute site path (leading and trailing slashes)
+root: /projects/Superdarks/code/
 ---
 
-# Project Code Folders
+# Project Code
 
-Below are the code sections. Click a folder to view its contents.
+Below are the immediate subfolders and files under `{{ page.root }}`.
 
-{%- comment -%}
-Use page.url as the canonical base. Emulate "startsWith" via slice compare.
-This lists *immediate* subfolders under /projects/Superdarks/code/.
-Works even if a subfolder has no index.md.
-{%- endcomment -%}
-{% assign base = page.url %}
+{% assign root = page.root %}
+{% assign files_under = site.static_files | where_exp: "f", "f.path contains root" %}
+{% assign pages_under = site.pages | where_exp: "p", "p.path != page.path and p.path contains root" %}
 
 {%- comment -%}
-Collect pages under base (exclude the base itself)
+Collect immediate subfolder names (from static files and pages)
 {%- endcomment -%}
-{% assign under_pages = site.pages
-  | where_exp: "p", "(p.url | slice: 0, base.size) == base and p.url != base" %}
-
-{%- comment -%}
-Collect static files under base (exclude the base itself)
-For each file, work with its directory path = f.path without filename.
-{%- endcomment -%}
-{% assign under_files = site.static_files
-  | where_exp: "f", "((f.path | slice: 0, base.size) == base) and f.path != base" %}
-
-{%- comment -%}
-Get first segment after base for pages (using url)
-{%- endcomment -%}
-{% assign page_groups = under_pages
-  | group_by_exp: "p", "p.url | remove_first: base | split: '/' | first" %}
-{% assign names_from_pages = page_groups | map: "name" %}
-
-{%- comment -%}
-Get first segment after base for files (using directory path)
-{%- endcomment -%}
-{% assign file_groups = under_files
-  | group_by_exp: "f", "(f.path | remove: f.name) | remove_first: base | split: '/' | first" %}
-{% assign names_from_files = file_groups | map: "name" %}
-
-{%- comment -%}
-Combine, clean, uniq, sort
-{%- endcomment -%}
-{% assign all_names = names_from_pages | concat: names_from_files %}
-{% assign cleaned = "" | split: "" %}
-{% for n in all_names %}
-  {% assign name = n | to_s | strip %}
-  {% if name != "" %}
-    {% assign cleaned = cleaned | push: name %}
+{% assign subfolder_blob = "" %}
+{% for f in files_under %}
+  {% assign rel = f.path | remove_first: root %}
+  {% assign parts = rel | split: "/" %}
+  {% if parts.size > 1 %}
+    {% assign subfolder_blob = subfolder_blob | append: parts[0] | append: "|" %}
   {% endif %}
 {% endfor %}
-{% assign subfolders = cleaned | uniq | sort %}
+{% for p in pages_under %}
+  {% assign relp = p.path | remove_first: root %}
+  {% assign partsp = relp | split: "/" %}
+  {% if partsp.size > 1 %}
+    {% assign subfolder_blob = subfolder_blob | append: partsp[0] | append: "|" %}
+  {% endif %}
+{% endfor %}
+{% assign subfolders = subfolder_blob | split: "|" | uniq | sort %}
 
+{%- comment -%}
+Collect immediate files (top-level, no slash after root)
+{%- endcomment -%}
+{% assign topfiles_blob = "" %}
+{% for f in files_under %}
+  {% assign rel = f.path | remove_first: root %}
+  {% unless rel == "" %}
+    {% assign parts = rel | split: "/" %}
+    {% if parts.size == 1 %}
+      {% assign topfiles_blob = topfiles_blob | append: rel | append: "|" %}
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+{% assign topfiles = topfiles_blob | split: "|" | uniq | sort %}
+
+## Subfolders
 {% if subfolders.size == 0 %}
-_No subfolders found under {{ base }}._
+_No subfolders found._
 {% else %}
 <ul>
   {% for name in subfolders %}
-    {% assign subdir = base | append: name | append: "/" %}
-    <li>📁 <a href="{{ subdir | relative_url }}">{{ name }}/</a></li>
+    {% if name != "" %}
+      <li><a href="{{ root | append: name | append: '/' | relative_url }}">{{ name }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
+
+## Files
+{% if topfiles.size == 0 %}
+_No files in this folder._
+{% else %}
+<ul>
+  {% for fname in topfiles %}
+    {% assign url = (root | append: fname) | relative_url %}
+    <li>
+      <a href="{{ url }}">{{ fname }}</a>
+      {% assign ext = fname | split: "." | last | downcase %}
+      {% if ext == "py" or ext == "pdb" %}
+        &nbsp;—&nbsp;<a href="{{ url }}" download>Download</a>
+      {% endif %}
+    </li>
   {% endfor %}
 </ul>
 {% endif %}

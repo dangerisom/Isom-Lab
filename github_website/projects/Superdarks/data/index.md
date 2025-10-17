@@ -2,9 +2,7 @@
 title: Data
 layout: default
 permalink: /projects/Superdarks/data/
-# Pretty page URL:
 root_pages: /projects/Superdarks/data/
-# Real static file location (note github_website):
 root_files: /github_website/projects/Superdarks/data/
 ---
 

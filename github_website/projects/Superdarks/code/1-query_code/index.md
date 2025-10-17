@@ -1,7 +1,9 @@
 ---
 layout: default
-title: code
+title: Superdarks data
 ---
+
+# 🧬 Superdarks: Code files : 1-query_code
 
 <ul>
 {% assign this_folder = 'github_website/projects/Superdarks/code/1-query_code/' %}
@@ -19,13 +21,6 @@ title: code
   {% endif %}
 {% endfor %}
 </ul>
-
-
----
-
-# 🧬 Superdarks: Structural Analysis Tools
-
-Welcome to the **Superdarks** codebase. This folder contains Python code used in our lab's research for protein structural analysis. More to come here when the manuscript publishes. 
 
 ## ⚠️ Disclaimer
 

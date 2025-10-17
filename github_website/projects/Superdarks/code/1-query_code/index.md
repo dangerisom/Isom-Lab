@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Superdarks data
+title: Superdarks code
 ---
 
 # 🧬 Superdarks: Code files : 1-query_code

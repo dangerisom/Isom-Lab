@@ -1,23 +1,21 @@
 ---
 layout: default
 title: 1-query_code
-permalink: /projects/Superdarks/code/1-query_code/
 ---
 
 <ul>
-{% assign here = page.dir %} {# e.g., /github_website/projects/Superdarks/code/1-query_code/ #}
-
-{% assign files = site.static_files
-  | where_exp: "f", "f.path startswith here"
-  | where_exp: "f", "f.extname == '.py'" %}
-
-{% for f in files %}
-  {% assign rest = f.path | remove_first: here %}
-  {% unless rest contains '/' %}
-    <li>
-      📄 <a href="{{ f.path | relative_url }}" target="_blank">{{ rest }}</a>
-      – <a href="{{ f.path | relative_url }}" download>Download</a>
-    </li>
-  {% endunless %}
+{% assign this_folder = 'github_website/projects/Superdarks/1-query_code/' %}
+{% assign github_repo_base = 'https://github.com/dangerisom/Isom-Lab/blob/main/' %}
+{% for file in site.static_files %}
+  {% assign path = file.path | remove_first: '/' %}
+  {% if path contains this_folder %}
+    {% assign rel = path | remove_first: this_folder %}
+    {% unless rel contains '/' %}
+      <li>
+        📄 <a href="{{ github_repo_base }}{{ this_folder }}{{ rel }}" target="_blank">{{ rel }}</a>  
+        – <a href="{{ site.baseurl }}/{{ path }}" download>Download</a>
+      </li>
+    {% endunless %}
+  {% endif %}
 {% endfor %}
 </ul>

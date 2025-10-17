@@ -1,15 +1,15 @@
 ---
-title: Code
+title: Data
 layout: default
-permalink: /projects/Superdarks/code/
-# IMPORTANT: If your repo keeps these under a folder named "github_website",
-# change root below to /github_website/projects/Superdarks/code/
-root: /projects/Superdarks/code/
+permalink: /projects/Superdarks/data/
+# If these folders actually live under a repo subfolder named "github_website",
+# change root below to /github_website/projects/Superdarks/data/
+root: /projects/Superdarks/data/
 ---
 
-# Project Code
+# Data
 
-Below are the immediate subfolders and files under `{{ page.root }}`.
+Below are the immediate subfolders and files under {{ page.root }}.
 
 {% assign root = page.root %}
 {% assign files_under = site.static_files | where_exp: "f", "f.path contains root" %}
@@ -53,9 +53,7 @@ _No subfolders found._
 <ul>
   {% for name in subfolders %}
     {% if name != "" %}
-      <li>
-        <a href="{{ root | append: name | append: '/' | relative_url }}">{{ name }}</a>
-      </li>
+      <li><a href="{{ root | append: name | append: '/' | relative_url }}">{{ name }}</a></li>
     {% endif %}
   {% endfor %}
 </ul>

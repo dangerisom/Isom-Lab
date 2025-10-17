@@ -5,6 +5,7 @@ title: Superdarks data
 
 # 🧬 Superdarks: Code files : 1-query_code
 
+<!--
 <ul>
 {% assign this_folder = 'github_website/projects/Superdarks/code/1-query_code/' %}
 {% assign github_repo_base = 'https://github.com/dangerisom/Isom-Lab/blob/main/' %}
@@ -29,4 +30,5 @@ This is **research-grade code** provided for academic and exploratory purposes o
 - The code was developed and extended over many years to support diverse use cases in computational structural biology.
 - You may encounter **commented sections**, **experimental blocks**, or **legacy fragments** — these reflect the evolving nature of scientific coding.
 - **Use at your own risk.** While we strive for accuracy, this code has not undergone rigorous software engineering review.
+-->
 

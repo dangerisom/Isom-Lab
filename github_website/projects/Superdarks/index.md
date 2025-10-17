@@ -24,4 +24,3 @@ If you want your visitors to jump straight into the code organization, here’s 
 - [3-post_query_informatics](./code/3-post_query_informatics/)
 - [4-colocalization_quantitation](./code/4-colocalization_quantitation/)
 - [5-python_wrappers](./code/5-python_wrappers/)
-

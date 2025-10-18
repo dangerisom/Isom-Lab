@@ -7,7 +7,7 @@ title: Superdarks code — folders
 
 <ul>
 {%- assign files_root  = "/github_website/projects/Superdarks/code/" -%}
-{%- assign pages_root  = "/github_website/projects/Superdarks/code/" -%}
+{%- assign pages_root  = "/projects/Superdarks/code/" -%}
 {%- assign subfolder_blob = "" -%}
 
 {%- comment -%} Collect folder names from static files {%- endcomment -%}

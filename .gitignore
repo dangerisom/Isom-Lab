@@ -1,0 +1,17 @@
+# macOS Finder metadata
+.DS_Store
+
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Editor / IDE noise
+.vscode/
+*.swp
+*~
+
+# Python bytecode (in case any .py artifacts slip in)
+__pycache__/
+*.pyc

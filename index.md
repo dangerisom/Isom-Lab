@@ -11,3 +11,6 @@ We study how cells sense and respond to their environment, with a focus on acidi
 
 - [pHinder](github_website/projects/pHinder/)
 - [Superdarks](github_website/projects/Superdarks/)
+- [bpp_identifier](github_website/projects/bpp_identifier/)
+- [vesicle_colocalization_quantifier](github_website/projects/vesicle_colocalization_quantifier/)
+- [vesicle_triangulator](github_website/projects/vesicle_triangulator/)

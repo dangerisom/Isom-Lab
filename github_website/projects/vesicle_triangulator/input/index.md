@@ -1,7 +1,6 @@
 ---
 layout: default
 title: vesicle_triangulator input
-permalink: /projects/vesicle_triangulator/input/
 ---
 <!-- stager: preserve -->
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: vesicle_triangulator example output — ch1
-permalink: /projects/vesicle_triangulator/example_output/ch1/
 ---
 <!-- stager: preserve -->
 

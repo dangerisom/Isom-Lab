@@ -1,7 +1,6 @@
 ---
 layout: default
 title: bpp_identifier example output
-permalink: /projects/bpp_identifier/example_output/
 ---
 <!-- stager: preserve -->
 

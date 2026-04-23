@@ -1,7 +1,6 @@
 ---
 layout: default
 title: bpp_identifier input
-permalink: /projects/bpp_identifier/input/
 ---
 <!-- stager: preserve -->
 

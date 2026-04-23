@@ -2,6 +2,7 @@
 layout: default
 title: superdarks code
 ---
+<!-- stager: preserve -->
 
 # 🧬 superdarks: Code files : 3-post_query_informatics/library
 
@@ -47,6 +48,15 @@ title: superdarks code
   {% endif %}
 {% endfor %}
 </ul>
+
+## 📜 Scripts in this folder
+
+This is the stage-3 copy of the Isom-Lab computational-geometry / PDB core — the same modules that ship under `1-query_code/library/`, bundled again here so stage-3 scripts (Clustal-Omega traceback mapping, BLASTP → network, go-forward traversal) can import them without referring across stages.
+
+- **`compGeometry.py`** — Core computational-geometry primitives: `geom_tol`, `Vertex` / `Vertex4D`, `Edge` / `Triangle` simplex classes, plane coefficients, general-position tests, distance and centroid helpers.
+- **`determinants.py`** — Explicit inline 2×2 / 3×3 / 4×4 determinants (no matrix-library dependency) used inside the convex-hull and orientation-test loops.
+- **`pdbFile.py`** — Hand-rolled PDB parser: `PDBfile`, `PseudoAtom`, residue-class constants (`NONPOLAR` / `POLAR` / `IONIZABLE` / `ALL_SIDECHAINS` / `ACTIVE`), gzip-aware I/O.
+- **`3rd_party_requirements.txt`** — External dependencies required by the stage-3 scripts: `Bio` (Biopython), `mmseqs`, `numpy`, `tqdm`.
 
 ## ⚠️ Disclaimer
 

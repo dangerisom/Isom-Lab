@@ -2,6 +2,7 @@
 layout: default
 title: superdarks code
 ---
+<!-- stager: preserve -->
 
 # 🧬 superdarks: Code files : 2-post_query_analysis/library
 
@@ -47,6 +48,12 @@ title: superdarks code
   {% endif %}
 {% endfor %}
 </ul>
+
+## 📜 Scripts in this folder
+
+The stage-2 post-query analysis scripts (`1-upset_analysis_on_filtered_hits.py`, `2-upset_analysis_on_unfiltered_hits.py`, `3-plot_score_contours.py`) are self-contained and rely only on mainstream Python packages, so this `library/` folder does not ship bundled modules. For shared Isom-Lab modules (`compGeometry.py`, `pdbFile.py`, `determinants.py`, …) see the sister `library/` folders under `1-query_code/` and `3-post_query_informatics/`.
+
+- **`3rd_party_requirements.txt`** — External dependencies required by the stage-2 scripts: `numpy`, `tqdm`. (UpSet plots additionally require `upsetplot` and `matplotlib`; contour plots require `matplotlib` in a headless backend — pip-install alongside these.)
 
 ## ⚠️ Disclaimer
 

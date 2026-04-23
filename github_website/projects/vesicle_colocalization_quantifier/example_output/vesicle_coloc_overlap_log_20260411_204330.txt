@@ -1,0 +1,35 @@
+=== Coloc Pixel Overlay Log ===
+Date: 2026-04-11 20:43:30
+
+Inputs:
+  Image 1: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/Maximum Projection_ch01_SV.tif
+  Image 2: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/Maximum Projection_ch02_SV.tif
+
+Parameters:
+  Channel 1 Min: 50
+  Channel 1 Intermediate: 100
+  Channel 1 Max: 255
+  Channel 2 Min: 50
+  Channel 2 Intermediate: 150
+  Channel 2 Max: 255
+  Contour Width: 1
+  Contour Area Min: 1
+  Contour Area Max: 2000
+
+Results:
+  Total Pixels Image 1: 13372
+  Total Pixels Image 2: 10869
+  Overlapping Pixels:   5023
+  Fraction Overlap Ch1: 0.3756
+  Fraction Overlap Ch2: 0.4621
+
+Output Files:
+  Ch1 Masked: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch01_SV_masked.png
+  Ch1 Overlap-Masked: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch01_SV_overlap_on_masked.png
+  Ch1 Overlay: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch01_SV_overlay.png
+  Ch1 Contours: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch01_SV_contours.png
+  Ch2 Masked: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch02_SV_masked.png
+  Ch2 Overlap-Masked: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch02_SV_overlap_on_masked.png
+  Ch2 Overlay: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch02_SV_overlay.png
+  Ch2 Contours: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/Maximum Projection_ch02_SV_contours.png
+  Log File: /Users/danisom/Resilio_Sync/resilio_code/1-python_scripts/image_analysis/1-vesicle_coloc_overlap/images_sets/co_localization/mTOR-Rap-Ric/round_2_final/mTOR/mTOR-0001/output_2026-04-11_20-43-30/vesicle_coloc_overlap_log_20260411_204330.txt

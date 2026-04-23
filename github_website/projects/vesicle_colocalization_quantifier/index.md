@@ -9,7 +9,8 @@ title: Project vesicle_colocalization_quantifier
 This project measures **two-channel pixel-level co-localization** of vesicles in microscopy images through an interactive, thresholded contour pipeline.
 
 - [code](code/)
-- [data](data/)
+- [input](input/)
+- [example_output](example_output/)
 
 ## 🔬 What vesicle_colocalization_quantifier Does
 

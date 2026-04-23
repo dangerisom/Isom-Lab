@@ -44,9 +44,13 @@ Each `projects/<name>/` folder follows the same skeleton:
     └── index.md    ← one row per file under data/; hand-written captions OK
 ```
 
-The stager **always regenerates** `index.md` and `README.md` at the project root, but
-**never overwrites** the `index.md` files under `code/` and `data/`, so hand-written
-captions on individual files survive every rerun.
+The stager regenerates `index.md` and `README.md` at the project root from each
+entry script's docstring on every run — **unless** the existing file contains the
+sentinel comment `<!-- stager: preserve -->`, in which case the stager leaves it
+alone. Drop that HTML comment just below the YAML front matter on any hand-edited
+landing page you want to protect. The `index.md` files under `code/` and `data/`
+are **never overwritten** regardless — the stager only creates them when missing,
+so hand-written file captions survive every rerun.
 
 ---
 

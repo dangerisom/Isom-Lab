@@ -2,6 +2,7 @@
 layout: default
 title: Project vesicle_triangulator
 ---
+<!-- stager: preserve -->
 
 # Project vesicle_triangulator
 

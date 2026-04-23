@@ -2,6 +2,7 @@
 layout: default
 title: Project vesicle_colocalization_quantifier
 ---
+<!-- stager: preserve -->
 
 # Project vesicle_colocalization_quantifier
 

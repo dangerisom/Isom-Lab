@@ -9,7 +9,8 @@ title: Project vesicle_triangulator
 This project reconstructs **3D spatial relationships between vesicle transfer events** from 2D coordinate data using convex-hull / Delaunay triangulation, then writes the geometry out as both an annotated overlay image and an auto-formatted Excel workbook.
 
 - [code](code/)
-- [data](data/)
+- [input](input/)
+- [example_output](example_output/)
 
 ## 🔬 What vesicle_triangulator Does
 

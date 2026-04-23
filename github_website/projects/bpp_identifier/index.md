@@ -9,7 +9,7 @@ title: Project bpp_identifier
 This project quantifies **bridges, projections, and protrusions** at cell–cell and cell–substrate boundaries in microscopy overlay images using interactive contour analysis.
 
 - [code](code/)
-- [input](input/)
+- [example_input](example_input/)
 - [example_output](example_output/)
 
 ## 🔬 What bpp_identifier Does

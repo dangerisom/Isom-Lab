@@ -9,7 +9,7 @@ title: Project pHinder
 This project explores structure-based relationsips using computational geometry.
 
 - [code](code/)
-- [data](data/)
+- [example_input](example_input/)
 
 ## 🧬 What pHinder Does
 

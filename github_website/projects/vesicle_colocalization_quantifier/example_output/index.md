@@ -6,7 +6,7 @@ title: vesicle_colocalization_quantifier example output
 
 # vesicle_colocalization_quantifier — Example output
 
-This folder is the full output bundle produced by running **vesicle_colocalization_quantifier** on the two-channel inputs in [`../input/`](../input/). The GUI writes one time-stamped `output_<timestamp>/` directory per run; the files below are the contents of that directory for the example run.
+This folder is the full output bundle produced by running **vesicle_colocalization_quantifier** on the two-channel inputs in [`../example_input/`](../example_input/). The GUI writes one time-stamped `output_<timestamp>/` directory per run; the files below are the contents of that directory for the example run.
 
 Outputs come in two symmetric sets — one per channel (`ch01_SV_*` and `ch02_SV_*`) — plus a single run-level log:
 

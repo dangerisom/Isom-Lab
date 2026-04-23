@@ -1,15 +1,15 @@
 ---
 layout: default
-title: bpp_identifier input
+title: bpp_identifier example_input
 ---
 <!-- stager: preserve -->
 
-# bpp_identifier — Input
+# bpp_identifier — Example input
 
 This folder holds a single example **microscopy overlay** used to exercise the bpp_identifier GUI end-to-end. It is the kind of image the tool expects as input: a pre-made overlay (typically one cell-marker channel combined with a second boundary / feature channel) in TIFF format. Point the "Load Original Overlay" button at a file like this, tune the threshold / contour parameters, and the app will segment cells, identify the cell–cell and cell–substrate interface, and classify **bridges**, **projections**, and **protrusions** along that boundary.
 
 <ul>
-{% assign this_folder = 'github_website/projects/bpp_identifier/input/' %}
+{% assign this_folder = 'github_website/projects/bpp_identifier/example_input/' %}
 {% assign github_repo_base = 'https://github.com/dangerisom/Isom-Lab/blob/main/' %}
 {% for file in site.static_files %}
   {% assign path = file.path | remove_first: '/' %}

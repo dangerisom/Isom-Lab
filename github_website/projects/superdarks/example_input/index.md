@@ -1,14 +1,15 @@
 ---
 layout: default
-title: superdarks data
+title: superdarks example_input
 ---
+<!-- stager: preserve -->
 
-# 🧬 superdarks: Data files
+# 🧬 superdarks: Example input files
 
 <!-- build: {{ site.time }} | rev: {{ site.github.build_revision }} -->
 
 <ul>
-{% assign this_folder = "/github_website/projects/superdarks/data/" %}
+{% assign this_folder = "/github_website/projects/superdarks/example_input/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {% for file in site.static_files %}

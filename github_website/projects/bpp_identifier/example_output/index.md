@@ -6,7 +6,7 @@ title: bpp_identifier example output
 
 # bpp_identifier — Example output
 
-This folder is the full output bundle produced by running **bpp_identifier** on the example overlay in [`../input/`](../input/). Each file below is generated automatically by the GUI into a time-stamped save directory; the set shown here is what you would see on disk after a single successful run.
+This folder is the full output bundle produced by running **bpp_identifier** on the example overlay in [`../example_input/`](../example_input/). Each file below is generated automatically by the GUI into a time-stamped save directory; the set shown here is what you would see on disk after a single successful run.
 
 Outputs are grouped roughly into three tiers:
 

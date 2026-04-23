@@ -6,7 +6,7 @@ title: vesicle_triangulator example output
 
 # vesicle_triangulator — Example output
 
-This folder is the full output bundle produced by running **vesicle_triangulator** on the two-channel inputs in [`../input/`](../input/). The tool organizes its outputs into three subfolders plus a top-level parameter log:
+This folder is the full output bundle produced by running **vesicle_triangulator** on the two-channel inputs in [`../example_input/`](../example_input/). The tool organizes its outputs into three subfolders plus a top-level parameter log:
 
 1. **`ch1/`** — per-channel-01 artifacts: the thresholded mask, the labeled connected-component image, the point centroids (as CSV), and the centroid overlay.
 2. **`ch2/`** — identical set of artifacts for channel-02.

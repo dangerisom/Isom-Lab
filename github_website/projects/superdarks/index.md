@@ -9,7 +9,7 @@ title: Project superdarks
 This project finds structural homologs ("darks") for a query protein across the entire AlphaFold Database using distributed computing, then enriches and networks the hits for discovery.
 
 - [code](code/)
-- [data](data/)
+- [example_input](example_input/)
 
 ## 🌌 What superdarks Does
 

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Superdarks code
+title: superdarks code
 ---
 
-# 🧬 Superdarks: Code files : 4-python_wrappers
+# 🧬 superdarks: Code files : 2-post_query_analysis
 
 <ul>
-{% assign this_folder = "/github_website/projects/Superdarks/code/4-python_wrappers/" %}
+{% assign this_folder = "/github_website/projects/superdarks/code/2-post_query_analysis/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {%- comment -%} Collect immediate subfolders and files {%- endcomment -%}
@@ -56,13 +56,13 @@ This is **research-grade code** provided for academic and exploratory purposes o
 <!--
 ---
 layout: default
-title: Superdarks code
+title: superdarks code
 ---
 
-# 🧬 Superdarks: Code files : 1-query_code
+# 🧬 superdarks: Code files : 1-query_code
 
 <ul>
-{% assign this_folder = "/github_website/projects/Superdarks/code/1-query_code/" %}
+{% assign this_folder = "/github_website/projects/superdarks/code/1-query_code/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {% for file in site.static_files %}

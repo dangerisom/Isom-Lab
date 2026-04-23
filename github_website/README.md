@@ -23,7 +23,7 @@ github_website/
 ├── README.md                              (this file)
 ├── initial_prompt.txt                     (2025 design notes for the Jekyll site)
 └── projects/
-    ├── Superdarks/
+    ├── superdarks/
     ├── bpp_identifier/
     ├── pHinder/
     ├── vesicle_colocalization_quantifier/
@@ -86,9 +86,9 @@ Beyond the core topology calculation, pHinder also supports protein–protein in
 detection and ligand-binding-cavity prediction. The method has been published in *Mol
 Cell* (2013) and *PNAS* (2015); the project's `index.md` lists the full citation set.
 
-### `Superdarks/` — large-scale structural alignment against the AlphaFold Database
+### `superdarks/` — large-scale structural alignment against the AlphaFold Database
 
-A four-stage pipeline for finding structural homologs ("darks", hence *Superdarks*) in
+A four-stage pipeline for finding structural homologs ("darks", hence *superdarks*) in
 the **AlphaFold Database** (≈214 M predictions) starting from one or more query PDBs.
 It distributes TM-align jobs across 1000 HPC nodes on University-of-Miami Triton (or
 Pegasus / BU SCC), then post-processes the hits through progressively richer
@@ -177,7 +177,7 @@ stamps this automatically; do not remove it.
   `vesicle_coloc_overlap_v2_1.py`, `vesicle_transfer_triangulation_v10_1.py`,
   `foldseek_individual_query_gui.py`) — run with `python <file>.py`.
 - *argparse CLIs* (`phinder_command_line.py`) — parse flags, expose `--help`.
-- *Configure-and-run scripts* — most of `Superdarks/code/` edits a CONFIG block near
+- *Configure-and-run scripts* — most of `superdarks/code/` edits a CONFIG block near
   the top (or takes `getopt` flags for HPC submission) rather than a full CLI. This is
   deliberate: cluster jobs are driven by `bsub` / Slurm wrappers, not interactive
   input.
@@ -195,7 +195,7 @@ dependency set across the tree: `numpy`, `cv2` (OpenCV), `pandas`, `openpyxl`,
 `primer3-py`, `rdkit`, `requests` (UniProt), `upsetplot`, and cluster-side binaries
 (`TMalign`, `fpocket`, `foldseek`, `blastp`, `pigz`, Clustal-Omega, LSF `bsub`).
 
-**File paths.** Many `Superdarks/` scripts hard-code cluster paths under
+**File paths.** Many `superdarks/` scripts hard-code cluster paths under
 `/projectnb/isomlab/dan/…` (BU SCC) or `/nethome/dgi5/…` (Triton). Before running on a
 new machine, search the header of the script for the CONFIG block and adjust paths
 and `cluster` / `queue` variables.

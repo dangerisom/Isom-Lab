@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Project Superdarks
+title: Project superdarks
 ---
 <!-- stager: preserve -->
 
-# Project Superdarks
+# Project superdarks
 
 This project finds structural homologs ("darks") for a query protein across the entire AlphaFold Database using distributed computing, then enriches and networks the hits for discovery.
 
 - [code](code/)
 - [data](data/)
 
-## 🌌 What Superdarks Does
+## 🌌 What superdarks Does
 
-**Superdarks** is a large-scale **structural homology discovery platform**. Starting from a single query PDB structure (for example, a 7-transmembrane receptor), it performs pairwise **TM-align** of the query against **214,528,851 AlphaFold Database predictions**, distributes the work across up to **1,000 HPC compute nodes**, and post-processes the hits through a four-stage informatics pipeline that produces **ranked hit lists, UpSet diagrams, contour plots, UniProt + InterPro annotations, BLAST-based sequence networks, and Cytoscape-ready subgraphs.**
+**superdarks** is a large-scale **structural homology discovery platform**. Starting from a single query PDB structure (for example, a 7-transmembrane receptor), it performs pairwise **TM-align** of the query against **214,528,851 AlphaFold Database predictions**, distributes the work across up to **1,000 HPC compute nodes**, and post-processes the hits through a four-stage informatics pipeline that produces **ranked hit lists, UpSet diagrams, contour plots, UniProt + InterPro annotations, BLAST-based sequence networks, and Cytoscape-ready subgraphs.**
 
 ## 🔍 Key Capabilities
 
@@ -60,7 +60,7 @@ This project finds structural homologs ("darks") for a query protein across the 
 
 ## 📚 Citations
 
-Superdarks is a pipeline built on several foundational methods. If you use it in your work, please cite the underlying tools along with any Isom-Lab publications describing the overall workflow (in preparation).
+superdarks is a pipeline built on several foundational methods. If you use it in your work, please cite the underlying tools along with any Isom-Lab publications describing the overall workflow (in preparation).
 
 1. Zhang Y, Skolnick J. *TM-align: a protein structure alignment algorithm based on the TM-score.* Nucleic Acids Res. 2005 Apr 22;33(7):2302-9. doi: [10.1093/nar/gki524](https://doi.org/10.1093/nar/gki524). PMID: [15849316](https://pubmed.ncbi.nlm.nih.gov/15849316)
 2. Jumper J, Evans R, Pritzel A, et al. *Highly accurate protein structure prediction with AlphaFold.* Nature. 2021 Aug;596(7873):583-589. doi: [10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2). PMID: [34265844](https://pubmed.ncbi.nlm.nih.gov/34265844)

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Superdarks code
+title: superdarks code
 ---
 
-# 🧬 Superdarks: Code files
+# 🧬 superdarks: Code files
 
-The Superdarks codebase is organized as a **four-stage pipeline**. Each subfolder below is one stage; click into a stage to browse its scripts and to read the stage-specific notes.
+The superdarks codebase is organized as a **four-stage pipeline**. Each subfolder below is one stage; click into a stage to browse its scripts and to read the stage-specific notes.
 
 1. **`1-query_code/`** — per-node TM-align runner and its job-submission wrapper, result consolidation, top-hit re-alignment, and coverage × TM-score hit parsing.
 2. **`2-post_query_analysis/`** — UpSet diagram intersection analysis over filtered and unfiltered hits, plus headless 2D/3D score-contour plots.
@@ -13,7 +13,7 @@ The Superdarks codebase is organized as a **four-stage pipeline**. Each subfolde
 4. **`4-python_wrappers/`** — standalone wrappers used at any stage: a Foldseek GUI front-end and an `fpocket` subprocess wrapper.
 
 <ul>
-{% assign this_folder = "/github_website/projects/Superdarks/code/" %}
+{% assign this_folder = "/github_website/projects/superdarks/code/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {%- comment -%} Collect immediate subfolders and files {%- endcomment -%}
@@ -65,7 +65,7 @@ This is **research-grade code** provided for academic and exploratory purposes o
 
 ## 📥 Getting Started
 
-Most scripts in `Superdarks/code/` are driven either by a **CONFIG block** at the top of the file (edit in place) or by **`getopt` flags** for HPC submission via LSF `bsub`. Before running on a new machine:
+Most scripts in `superdarks/code/` are driven either by a **CONFIG block** at the top of the file (edit in place) or by **`getopt` flags** for HPC submission via LSF `bsub`. Before running on a new machine:
 
 1. Open the script's header and set `cluster`, `queue`, and any absolute paths under `/projectnb/isomlab/…` or `/nethome/…` to match your environment.
 2. Confirm required cluster-side binaries are on `PATH`: `TMalign`, `blastp`, `clustalo`, `foldseek`, `fpocket`, `pigz`, and `bsub`.

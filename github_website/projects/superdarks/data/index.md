@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Superdarks data
+title: superdarks data
 ---
 
-# 🧬 Superdarks: Data files
+# 🧬 superdarks: Data files
 
 <!-- build: {{ site.time }} | rev: {{ site.github.build_revision }} -->
 
 <ul>
-{% assign this_folder = "/github_website/projects/Superdarks/data/" %}
+{% assign this_folder = "/github_website/projects/superdarks/data/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {% for file in site.static_files %}

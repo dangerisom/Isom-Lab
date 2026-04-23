@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Superdarks code
+title: superdarks code
 ---
 
-# 🧬 Superdarks: Code files : 3-post_query_informatics/7-clusterupdate_branch
+# 🧬 superdarks: Code files : 3-post_query_informatics/7-clusterupdate_branch
 
 <ul>
-{% assign this_folder = "/github_website/projects/Superdarks/code/3-post_query_informatics/7-clusterupdate_branch/" %}
+{% assign this_folder = "/github_website/projects/superdarks/code/3-post_query_informatics/7-clusterupdate_branch/" %}
 {% assign github_repo_base = "https://github.com/dangerisom/Isom-Lab/blob/main" %}
 
 {%- comment -%} Collect immediate subfolders and files {%- endcomment -%}

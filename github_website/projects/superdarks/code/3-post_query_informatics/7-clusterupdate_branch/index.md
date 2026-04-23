@@ -48,6 +48,11 @@ title: superdarks code
 {% endfor %}
 </ul>
 
+## 📜 Scripts in this folder
+
+- **`7-1-sort_sequences_cu.py`** — Splits a combined FASTA into per-superkingdom files (`.archaea.fa`, `.bacteria.fa`, `.eukaryota.fa`, `.other.fa`) by parsing the first pipe-delimited field of the header, and writes a `<base>.split_report.txt` summary.
+- **`7-2-mmseqs_linclust_priority_cu.py`** — Builds priority MMseqs2 representatives with `linclust` + `clusterupdate` in Archaea → Bacteria → Eukaryota order, using safe DB naming that avoids in-place reuse (requires `mmseqs` on `PATH`).
+
 ## ⚠️ Disclaimer
 
 This is **research-grade code** provided for academic and exploratory purposes only. It is **not intended for professional or clinical deployment**.

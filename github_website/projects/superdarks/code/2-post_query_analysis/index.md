@@ -48,6 +48,12 @@ title: superdarks code
 {% endfor %}
 </ul>
 
+## 📜 Scripts in this folder
+
+- **`1-upset_analysis_on_filtered_hits.py`** — Builds UpSet intersection diagrams (plus a matching Excel counts sheet) of InterPro-domain membership across the **filtered** hit set, with tqdm progress bars.
+- **`2-upset_analysis_on_unfiltered_hits.py`** — Same UpSet analysis run over the **unfiltered** hit set, using `from_indicators` on the boolean membership matrix for robustness at scale.
+- **`3-plot_score_contours.py`** — Headless / cluster-friendly plotting pipeline (no CLI, no GUI) that emits 2D and 3D scatter + density-contour plots of coverage vs TM-score vs rank, plus a companion Excel table — optionally per-rank.
+
 ## ⚠️ Disclaimer
 
 This is **research-grade code** provided for academic and exploratory purposes only. It is **not intended for professional or clinical deployment**.

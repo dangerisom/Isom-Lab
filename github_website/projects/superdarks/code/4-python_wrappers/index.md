@@ -48,6 +48,11 @@ title: superdarks code
 {% endfor %}
 </ul>
 
+## 📜 Scripts in this folder
+
+- **`foldseek_individual_query_gui.py`** — Tkinter front-end for running `foldseek createdb` and `foldseek search` on a single query, with stale-index detection and macOS-safe file filters (`.cif` / `.mmcif` / `.pdb`, ± `.gz`).
+- **`fpocket_python_wrapper.py`** — Thin Python wrapper around the `fpocket` cavity-detection binary that gathers the generated `*_out/` directories into a clean result set.
+
 ## ⚠️ Disclaimer
 
 This is **research-grade code** provided for academic and exploratory purposes only. It is **not intended for professional or clinical deployment**.

@@ -6,7 +6,7 @@ title: Project bpp_identifier
 
 # Project bpp_identifier
 
-This project quantifies **bridges, projections, and protrusions** at cell–cell and cell–substrate boundaries in microscopy overlay images using interactive contour analysis.
+This project quantifies **bridges, projections, and protrusions** at cell–cell boundaries in microscopy overlay images using interactive connected-component analysis.
 
 - [code](code/)
 - [example_input](example_input/)
@@ -25,16 +25,16 @@ This project quantifies **bridges, projections, and protrusions** at cell–cell
   Exposes **threshold_min**, **threshold_max**, and hole-area parameters as GUI fields, so the user can dial in segmentation quality without re-running the script or editing source.
 
 - **Skeleton-Midline Connection Detection**  
-  Uses a configurable radial search radius (`max_r`) to walk the skeleton midline and detect bridging connections between otherwise-separate contour regions.
+  Uses a configurable radial search radius (`max_r`) to walk the skeleton midline and detect bridging connections.
 
 - **Separate Hole and Non-Hole Paths**  
-  Distinguishes between interior holes (e.g., closed bleb interiors) and exterior contours using independent area thresholds (`min_hole_area_holes`, `hard_min_large_green_area`), avoiding the common failure mode where hole artifacts dominate the count.
+  Distinguishes between interior holes (e.g., closed bleb interiors) and exterior contours using independent area thresholds (`min_hole_area_holes`, `hard_min_large_green_area`), avoiding the common failure mode where hole artifacts dominate.
 
 - **Debugging Toggles**  
   `enable_interface_islands` and `enable_green_fragment_to_interface` are exposed as runtime flags so the user can step through intermediate stages of the pipeline when tuning parameters for a new image set.
 
 - **Edge-Margin Filtering**  
-  An `edge_margin` parameter in pixels draws an inner bounding box that ignores contours touching the image border, preventing imaging artifacts from inflating counts.
+  An `edge_margin` parameter in pixels draws an inner bounding box that ignores contours touching the image border, preventing imaging artifacts.
 
 - **Per-Run Timestamped Save Directories**  
   Every analysis writes into a dated subfolder so the output directory accumulates a clean audit trail of every parameter sweep.

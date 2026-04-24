@@ -6,7 +6,7 @@ title: Project vesicle_triangulator
 
 # Project vesicle_triangulator
 
-This project reconstructs **3D spatial relationships between vesicle transfer events** from 2D coordinate data using convex-hull / Delaunay triangulation, then writes the geometry out as both an annotated overlay image and an auto-formatted Excel workbook.
+This project reconstructs **topological relationships between vesicle transfer events** from 2D coordinate data using convex-hull / Delaunay triangulation, then writes the geometry out as both an annotated overlay image and an auto-formatted Excel workbook.
 
 - [code](code/)
 - [example_input](example_input/)
@@ -14,7 +14,7 @@ This project reconstructs **3D spatial relationships between vesicle transfer ev
 
 ## 🔬 What vesicle_triangulator Does
 
-**vesicle_triangulator** is a **Tkinter-based image-analysis application** that ingests CSV coordinate files plus their companion component images, builds a **3D convex hull and Delaunay triangulation** via the Isom-Lab `compGeometry` and `convexHull3D_2_1` modules, and emits the triangulated mesh as both a visualization overlay and a structured Excel report. It is designed for quantifying vesicle-transfer events between cells, where the raw data is a list of transfer-point coordinates that need to be placed into consistent 3D geometric context for downstream analysis.
+**vesicle_triangulator** is a **Tkinter-based image-analysis application** that ingests CSV 2D coordinates extracted from thresholded connected-component images from two color channels, builds a **calculates a 2D Delaunay triangulation using the 3D convex hull down projection method** via the Isom-Lab `compGeometry` and `convexHull3D_2_1` modules, and emits the triangulated mesh as both a visualization overlay and a structured Excel report. It is designed for quantifying vesicle-transfer events between cells, and characterizing vescicular neighborhoods, where the raw data is a list of transfer-point coordinates that need to be placed into consistent 3D geometric context for downstream analysis.
 
 ## 🔍 Key Capabilities
 

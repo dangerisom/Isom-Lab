@@ -18,7 +18,7 @@ This project finds structural homologs ("darks") for a query protein across the 
 ## 🔍 Key Capabilities
 
 - **Distributed Structural Alignment**  
-  Submits per-node **TM-align** jobs to the Triton or Pegasus clusters (or BU SCC) via LSF `bsub`, with a job parser that consolidates hits and supports resubmission of failed jobs.
+  Submits per-node **TM-align** jobs to HPC clusters via LSF `bsub`, with a job parser that consolidates hits and supports resubmission of failed jobs.
 
 - **Filtering by Coverage and TM-Score**  
   Parses `rank--coverage-tm--UNIPROT-…-full.pdb` filenames and applies configurable `min_tm_score` and `min_residues` thresholds to distinguish meaningful structural matches from background noise.

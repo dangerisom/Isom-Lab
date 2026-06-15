@@ -15,3 +15,15 @@ _site/
 # Python bytecode (in case any .py artifacts slip in)
 __pycache__/
 *.pyc
+
+# --- Secrets: never commit credentials -----------------------------------
+# Token / credential files (rotate on GitHub if one ever lands here)
+*token*.txt
+*tokens*.txt
+*secret*
+*credential*
+*.pem
+.env
+.env.*
+personal_access_token*
+githubTokens*

@@ -27,6 +27,11 @@ projects are documented here while they are migrated.
   read and how they interconnect, written as LLM-trainable tagged text · v0.1.1 ·
   Bioconda recipe under review
 
+### Core library
+
+- **[isomlab](https://github.com/isomlab/isomlab)** — shared computational-geometry and
+  structural (PDB/mmCIF) routines that the released tools are built on
+
 ### Project pages
 
 - [superdarks](github_website/projects/superdarks/)

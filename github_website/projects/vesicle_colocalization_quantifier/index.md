@@ -12,6 +12,18 @@ This project measures **two-channel pixel-level co-localization** of vesicles in
 - [example_input](example_input/)
 - [example_output](example_output/)
 
+## 📦 Archived release
+
+The version of this code used for the associated manuscript is preserved at the
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+repository, and archived at Zenodo:
+
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+
+Both are concept DOIs and always resolve to the latest version. The full citation will be
+added here on publication.
+
 ## 🔬 What vesicle_colocalization_quantifier Does
 
 **vesicle_colocalization_quantifier** is a **Tkinter-based image-analysis application** that loads two microscopy channels (for example, a green vesicle marker and a red target marker), applies independent per-channel thresholds and contour detection (OpenCV), and computes the pixel-level **overlap** between the two. It reports the number of contours in each channel, the number of overlap regions, and the fraction of each channel that co-localizes with the other — then overlays the yellow intersection contours onto the composite image for visual confirmation. The GUI is designed for biologists who need reproducible vesicle co-localization counts without writing code.

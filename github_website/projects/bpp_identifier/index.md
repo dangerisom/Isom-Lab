@@ -12,6 +12,18 @@ This project quantifies **bridges, projections, and protrusions** at cell–cell
 - [example_input](example_input/)
 - [example_output](example_output/)
 
+## 📦 Archived release
+
+The version of this code used for the associated manuscript is preserved at the
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+repository, and archived at Zenodo:
+
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+
+Both are concept DOIs and always resolve to the latest version. The full citation will be
+added here on publication.
+
 ## 🔬 What bpp_identifier Does
 
 **bpp_identifier** is a **Tkinter-based image-analysis application** that loads a microscopy overlay, applies a user-adjustable threshold / contour pipeline (OpenCV), and automatically detects and quantifies three classes of boundary morphology: **bridges** (narrow links spanning gaps), **projections** (outward extensions from a cell boundary), and **protrusions** (localized bulges or blebs). It is designed for biologists who want reproducible, per-image quantification without writing code — every run is time-stamped into its own save directory so repeat analyses never collide.

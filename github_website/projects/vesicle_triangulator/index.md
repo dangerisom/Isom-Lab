@@ -12,6 +12,18 @@ This project reconstructs **topological relationships between vesicle transfer e
 - [example_input](example_input/)
 - [example_output](example_output/)
 
+## 📦 Archived release
+
+The version of this code used for the associated manuscript is preserved at the
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+repository, and archived at Zenodo:
+
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+
+Both are concept DOIs and always resolve to the latest version. The full citation will be
+added here on publication.
+
 ## 🔬 What vesicle_triangulator Does
 
 **vesicle_triangulator** is a **Tkinter-based image-analysis application** that ingests CSV 2D coordinates extracted from thresholded connected-component images from two color channels, builds a **calculates a 2D Delaunay triangulation using the 3D convex hull down projection method** via the Isom-Lab `compGeometry` and `convexHull3D_2_1` modules, and emits the triangulated mesh as both a visualization overlay and a structured Excel report. It is designed for quantifying vesicle-transfer events between cells, and characterizing vescicular neighborhoods, where the raw data is a list of transfer-point coordinates that need to be placed into consistent 3D geometric context for downstream analysis.

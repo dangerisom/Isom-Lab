@@ -11,6 +11,18 @@ This project finds structural homologs ("darks") for a query protein across the 
 - [code](code/)
 - [example_input](example_input/)
 
+## 📦 Archived release
+
+The version of this code used for the associated manuscript is preserved at the
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+repository, and archived at Zenodo:
+
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+
+Both are concept DOIs and always resolve to the latest version. The full citation will be
+added here on publication.
+
 ## 🌌 What superdarks Does
 
 **superdarks** is a large-scale **structural homology discovery platform**. Starting from a single query PDB structure (for example, a 7-transmembrane receptor), it performs pairwise **TM-align** of the query against **214,528,851 AlphaFold Database predictions**, distributes the work across up to **1,000 HPC compute nodes**, and post-processes the hits through a four-stage informatics pipeline that produces **ranked hit lists, UpSet diagrams, contour plots, UniProt + InterPro annotations, BLAST-based sequence networks, and Cytoscape-ready subgraphs.**

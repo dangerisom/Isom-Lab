@@ -8,7 +8,7 @@ title: Project pHinder
 
 This project explores structure-based relationships using computational geometry.
 
-**Source code:** [github.com/isomlab/pHinder](https://github.com/isomlab/pHinder).
+**Source code:** [github.com/isomlab/pHinder](https://github.com/isomlab/pHinder){:target="_blank" rel="noopener"}.
 pHinder is an installable Python package (`phinder` CLI and `phinder-gui` GUI) built on
 the Isom Lab `isomlab` core. See the repository README for installation; pip/conda
 packaging is in progress.
@@ -51,12 +51,12 @@ packaging is in progress.
 
 If you use **pHinder** in your work, please cite the following publications that describe the method and its applications:
 
-1. Isom DG, Sridharan V, Baker R, Clement ST, Smalley DM, Dohlman HG. *Protons as second messenger regulators of G protein signaling.* Mol Cell. 2013 Aug 22;51(4):531-8. doi: [10.1016/j.molcel.2013.07.012](https://doi.org/10.1016/j.molcel.2013.07.012). PMID: [23954348](https://pubmed.ncbi.nlm.nih.gov/23954348)
-2. Isom DG, Dohlman HG. *Buried ionizable networks are an ancient hallmark of G protein-coupled receptor activation.* Proc Natl Acad Sci U S A. 2015 May 5;112(18):5702-7. doi: [10.1073/pnas.1417888112](https://doi.org/10.1073/pnas.1417888112). PMID: [25902551](https://pubmed.ncbi.nlm.nih.gov/25902551)
-3. Isom DG, Sridharan V, Dohlman HG. *Regulation of Ras Paralog Thermostability by Networks of Buried Ionizable Groups.* Biochemistry. 2016 Jan 26;55(3):534-42. doi: [10.1021/acs.biochem.5b00901](https://doi.org/10.1021/acs.biochem.5b00901). PMID: [26701741](https://pubmed.ncbi.nlm.nih.gov/26701741)
-4. Isom DG, Page SC, Collins LB, Kapolka NJ, Taghon GJ, Dohlman HG. *Coordinated regulation of intracellular pH by two glucose-sensing pathways in yeast.* J Biol Chem. 2018 Feb 16;293(7):2318-2329. doi: [10.1074/jbc.RA117.000422](https://doi.org/10.1074/jbc.RA117.000422). PMID: [29284676](https://pubmed.ncbi.nlm.nih.gov/29284676)
-5. Luna LA, Lesecq Z, White KA, Hoang A, Scott DA, Zagnitko O, Bobkov AA, Barber DL, Schiffer JM, Isom DG, Sohl CD. *An acidic residue buried in the dimer interface of isocitrate dehydrogenase 1 (IDH1) helps regulate catalysis and pH sensitivity.* Biochem J. 2020 Aug 28;477(16):2999-3018. doi: [10.1042/BCJ20200311](https://doi.org/10.1042/BCJ20200311). PMID: [32729927](https://pubmed.ncbi.nlm.nih.gov/32729927)
-6. Rowe JB, Kapolka NJ, Taghon GJ, Morgan WM, Isom DG. *The evolution and mechanism of GPCR proton sensing.* J Biol Chem. 2021 Jan-Jun;296:100167. doi: [10.1074/jbc.RA120.016352](https://doi.org/10.1074/jbc.RA120.016352). PMID: [33478938](https://pubmed.ncbi.nlm.nih.gov/33478938)
-7. Taghon GJ, Rowe JB, Kapolka NJ, Isom DG. *Predictable cholesterol binding sites in GPCRs lack consensus motifs.* Structure. 2021 May 6;29(5):499-506.e3. doi: [10.1016/j.str.2021.01.004](https://doi.org/10.1016/j.str.2021.01.004). PMID: [33508215](https://pubmed.ncbi.nlm.nih.gov/33508215)
+1. Isom DG, Sridharan V, Baker R, Clement ST, Smalley DM, Dohlman HG. *Protons as second messenger regulators of G protein signaling.* Mol Cell. 2013 Aug 22;51(4):531-8. doi: [10.1016/j.molcel.2013.07.012](https://doi.org/10.1016/j.molcel.2013.07.012){:target="_blank" rel="noopener"}. PMID: [23954348](https://pubmed.ncbi.nlm.nih.gov/23954348){:target="_blank" rel="noopener"}
+2. Isom DG, Dohlman HG. *Buried ionizable networks are an ancient hallmark of G protein-coupled receptor activation.* Proc Natl Acad Sci U S A. 2015 May 5;112(18):5702-7. doi: [10.1073/pnas.1417888112](https://doi.org/10.1073/pnas.1417888112){:target="_blank" rel="noopener"}. PMID: [25902551](https://pubmed.ncbi.nlm.nih.gov/25902551){:target="_blank" rel="noopener"}
+3. Isom DG, Sridharan V, Dohlman HG. *Regulation of Ras Paralog Thermostability by Networks of Buried Ionizable Groups.* Biochemistry. 2016 Jan 26;55(3):534-42. doi: [10.1021/acs.biochem.5b00901](https://doi.org/10.1021/acs.biochem.5b00901){:target="_blank" rel="noopener"}. PMID: [26701741](https://pubmed.ncbi.nlm.nih.gov/26701741){:target="_blank" rel="noopener"}
+4. Isom DG, Page SC, Collins LB, Kapolka NJ, Taghon GJ, Dohlman HG. *Coordinated regulation of intracellular pH by two glucose-sensing pathways in yeast.* J Biol Chem. 2018 Feb 16;293(7):2318-2329. doi: [10.1074/jbc.RA117.000422](https://doi.org/10.1074/jbc.RA117.000422){:target="_blank" rel="noopener"}. PMID: [29284676](https://pubmed.ncbi.nlm.nih.gov/29284676){:target="_blank" rel="noopener"}
+5. Luna LA, Lesecq Z, White KA, Hoang A, Scott DA, Zagnitko O, Bobkov AA, Barber DL, Schiffer JM, Isom DG, Sohl CD. *An acidic residue buried in the dimer interface of isocitrate dehydrogenase 1 (IDH1) helps regulate catalysis and pH sensitivity.* Biochem J. 2020 Aug 28;477(16):2999-3018. doi: [10.1042/BCJ20200311](https://doi.org/10.1042/BCJ20200311){:target="_blank" rel="noopener"}. PMID: [32729927](https://pubmed.ncbi.nlm.nih.gov/32729927){:target="_blank" rel="noopener"}
+6. Rowe JB, Kapolka NJ, Taghon GJ, Morgan WM, Isom DG. *The evolution and mechanism of GPCR proton sensing.* J Biol Chem. 2021 Jan-Jun;296:100167. doi: [10.1074/jbc.RA120.016352](https://doi.org/10.1074/jbc.RA120.016352){:target="_blank" rel="noopener"}. PMID: [33478938](https://pubmed.ncbi.nlm.nih.gov/33478938){:target="_blank" rel="noopener"}
+7. Taghon GJ, Rowe JB, Kapolka NJ, Isom DG. *Predictable cholesterol binding sites in GPCRs lack consensus motifs.* Structure. 2021 May 6;29(5):499-506.e3. doi: [10.1016/j.str.2021.01.004](https://doi.org/10.1016/j.str.2021.01.004){:target="_blank" rel="noopener"}. PMID: [33508215](https://pubmed.ncbi.nlm.nih.gov/33508215){:target="_blank" rel="noopener"}
 
 

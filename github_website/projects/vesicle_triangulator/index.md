@@ -15,11 +15,11 @@ This project reconstructs **topological relationships between vesicle transfer e
 ## 📦 Archived release
 
 The version of this code used for the associated manuscript is preserved at the
-[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026){:target="_blank" rel="noopener"} tag of this
 repository, and archived at Zenodo:
 
-- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
-- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708){:target="_blank" rel="noopener"} (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101){:target="_blank" rel="noopener"} (CC BY 4.0)
 
 Both are concept DOIs and always resolve to the latest version. The full citation will be
 added here on publication.
@@ -60,7 +60,7 @@ added here on publication.
 
 A publication describing vesicle_triangulator is in preparation. If you use the tool in your work in the meantime, please cite the underlying OpenCV, NumPy, and Matplotlib frameworks along with any forthcoming Isom-Lab paper that features the tool.
 
-1. Bradski G. *The OpenCV Library.* Dr. Dobb's Journal of Software Tools, 2000. [https://opencv.org](https://opencv.org)
-2. Harris CR, Millman KJ, van der Walt SJ, et al. *Array programming with NumPy.* Nature. 2020 Sep;585(7825):357-362. doi: [10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2). PMID: [32939066](https://pubmed.ncbi.nlm.nih.gov/32939066)
-3. Hunter JD. *Matplotlib: A 2D Graphics Environment.* Computing in Science & Engineering. 2007;9(3):90-95. doi: [10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55)
-4. McKinney W. *Data Structures for Statistical Computing in Python.* Proceedings of the 9th Python in Science Conference, 2010;445:56-61. doi: [10.25080/Majora-92bf1922-00a](https://doi.org/10.25080/Majora-92bf1922-00a)
+1. Bradski G. *The OpenCV Library.* Dr. Dobb's Journal of Software Tools, 2000. [https://opencv.org](https://opencv.org){:target="_blank" rel="noopener"}
+2. Harris CR, Millman KJ, van der Walt SJ, et al. *Array programming with NumPy.* Nature. 2020 Sep;585(7825):357-362. doi: [10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2){:target="_blank" rel="noopener"}. PMID: [32939066](https://pubmed.ncbi.nlm.nih.gov/32939066){:target="_blank" rel="noopener"}
+3. Hunter JD. *Matplotlib: A 2D Graphics Environment.* Computing in Science & Engineering. 2007;9(3):90-95. doi: [10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55){:target="_blank" rel="noopener"}
+4. McKinney W. *Data Structures for Statistical Computing in Python.* Proceedings of the 9th Python in Science Conference, 2010;445:56-61. doi: [10.25080/Majora-92bf1922-00a](https://doi.org/10.25080/Majora-92bf1922-00a){:target="_blank" rel="noopener"}

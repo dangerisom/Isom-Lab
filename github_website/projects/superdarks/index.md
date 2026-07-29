@@ -14,11 +14,11 @@ This project finds structural homologs ("darks") for a query protein across the 
 ## 📦 Archived release
 
 The version of this code used for the associated manuscript is preserved at the
-[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026) tag of this
+[`nature-code-2026`](https://github.com/dangerisom/Isom-Lab/tree/nature-code-2026){:target="_blank" rel="noopener"} tag of this
 repository, and archived at Zenodo:
 
-- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708) (MIT)
-- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101) (CC BY 4.0)
+- **Code** — [10.5281/zenodo.21175708](https://doi.org/10.5281/zenodo.21175708){:target="_blank" rel="noopener"} (MIT)
+- **Datasets S1–S4** — [10.5281/zenodo.21178101](https://doi.org/10.5281/zenodo.21178101){:target="_blank" rel="noopener"} (CC BY 4.0)
 
 Both are concept DOIs and always resolve to the latest version. The full citation will be
 added here on publication.
@@ -74,10 +74,10 @@ added here on publication.
 
 superdarks is a pipeline built on several foundational methods. If you use it in your work, please cite the underlying tools along with any Isom-Lab publications describing the overall workflow (in preparation).
 
-1. Zhang Y, Skolnick J. *TM-align: a protein structure alignment algorithm based on the TM-score.* Nucleic Acids Res. 2005 Apr 22;33(7):2302-9. doi: [10.1093/nar/gki524](https://doi.org/10.1093/nar/gki524). PMID: [15849316](https://pubmed.ncbi.nlm.nih.gov/15849316)
-2. Jumper J, Evans R, Pritzel A, et al. *Highly accurate protein structure prediction with AlphaFold.* Nature. 2021 Aug;596(7873):583-589. doi: [10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2). PMID: [34265844](https://pubmed.ncbi.nlm.nih.gov/34265844)
-3. Varadi M, Anyango S, Deshpande M, et al. *AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space with high-accuracy models.* Nucleic Acids Res. 2022 Jan 7;50(D1):D439-D444. doi: [10.1093/nar/gkab1061](https://doi.org/10.1093/nar/gkab1061). PMID: [34791371](https://pubmed.ncbi.nlm.nih.gov/34791371)
-4. van Kempen M, Kim SS, Tumescheit C, Mirdita M, Lee J, Gilchrist CLM, Söding J, Steinegger M. *Fast and accurate protein structure search with Foldseek.* Nat Biotechnol. 2024 Feb;42(2):243-246. doi: [10.1038/s41587-023-01773-0](https://doi.org/10.1038/s41587-023-01773-0). PMID: [37156916](https://pubmed.ncbi.nlm.nih.gov/37156916)
-5. Altschul SF, Madden TL, Schäffer AA, Zhang J, Zhang Z, Miller W, Lipman DJ. *Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.* Nucleic Acids Res. 1997 Sep 1;25(17):3389-402. doi: [10.1093/nar/25.17.3389](https://doi.org/10.1093/nar/25.17.3389). PMID: [9254694](https://pubmed.ncbi.nlm.nih.gov/9254694)
-6. Sievers F, Higgins DG. *Clustal Omega for making accurate alignments of many protein sequences.* Protein Sci. 2018 Jan;27(1):135-145. doi: [10.1002/pro.3290](https://doi.org/10.1002/pro.3290). PMID: [28884485](https://pubmed.ncbi.nlm.nih.gov/28884485)
-7. Le Guilloux V, Schmidtke P, Tuffery P. *Fpocket: an open source platform for ligand pocket detection.* BMC Bioinformatics. 2009 Jun 2;10:168. doi: [10.1186/1471-2105-10-168](https://doi.org/10.1186/1471-2105-10-168). PMID: [19486540](https://pubmed.ncbi.nlm.nih.gov/19486540)
+1. Zhang Y, Skolnick J. *TM-align: a protein structure alignment algorithm based on the TM-score.* Nucleic Acids Res. 2005 Apr 22;33(7):2302-9. doi: [10.1093/nar/gki524](https://doi.org/10.1093/nar/gki524){:target="_blank" rel="noopener"}. PMID: [15849316](https://pubmed.ncbi.nlm.nih.gov/15849316){:target="_blank" rel="noopener"}
+2. Jumper J, Evans R, Pritzel A, et al. *Highly accurate protein structure prediction with AlphaFold.* Nature. 2021 Aug;596(7873):583-589. doi: [10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2){:target="_blank" rel="noopener"}. PMID: [34265844](https://pubmed.ncbi.nlm.nih.gov/34265844){:target="_blank" rel="noopener"}
+3. Varadi M, Anyango S, Deshpande M, et al. *AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space with high-accuracy models.* Nucleic Acids Res. 2022 Jan 7;50(D1):D439-D444. doi: [10.1093/nar/gkab1061](https://doi.org/10.1093/nar/gkab1061){:target="_blank" rel="noopener"}. PMID: [34791371](https://pubmed.ncbi.nlm.nih.gov/34791371){:target="_blank" rel="noopener"}
+4. van Kempen M, Kim SS, Tumescheit C, Mirdita M, Lee J, Gilchrist CLM, Söding J, Steinegger M. *Fast and accurate protein structure search with Foldseek.* Nat Biotechnol. 2024 Feb;42(2):243-246. doi: [10.1038/s41587-023-01773-0](https://doi.org/10.1038/s41587-023-01773-0){:target="_blank" rel="noopener"}. PMID: [37156916](https://pubmed.ncbi.nlm.nih.gov/37156916){:target="_blank" rel="noopener"}
+5. Altschul SF, Madden TL, Schäffer AA, Zhang J, Zhang Z, Miller W, Lipman DJ. *Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.* Nucleic Acids Res. 1997 Sep 1;25(17):3389-402. doi: [10.1093/nar/25.17.3389](https://doi.org/10.1093/nar/25.17.3389){:target="_blank" rel="noopener"}. PMID: [9254694](https://pubmed.ncbi.nlm.nih.gov/9254694){:target="_blank" rel="noopener"}
+6. Sievers F, Higgins DG. *Clustal Omega for making accurate alignments of many protein sequences.* Protein Sci. 2018 Jan;27(1):135-145. doi: [10.1002/pro.3290](https://doi.org/10.1002/pro.3290){:target="_blank" rel="noopener"}. PMID: [28884485](https://pubmed.ncbi.nlm.nih.gov/28884485){:target="_blank" rel="noopener"}
+7. Le Guilloux V, Schmidtke P, Tuffery P. *Fpocket: an open source platform for ligand pocket detection.* BMC Bioinformatics. 2009 Jun 2;10:168. doi: [10.1186/1471-2105-10-168](https://doi.org/10.1186/1471-2105-10-168){:target="_blank" rel="noopener"}. PMID: [19486540](https://pubmed.ncbi.nlm.nih.gov/19486540){:target="_blank" rel="noopener"}

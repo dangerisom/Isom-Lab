@@ -26,6 +26,15 @@ projects are documented here while they are migrated.
 - **[litlog](https://github.com/isomlab/litlog){:target="_blank" rel="noopener"}** — local-first tracker for the papers you
   read and how they interconnect, written as LLM-trainable tagged text · v0.1.1 ·
   Bioconda recipe under review
+- **[vesicle_colocalization_quantifier](https://github.com/isomlab/vesicle_colocalization_quantifier){:target="_blank" rel="noopener"}** —
+  interactive two-channel vesicle co-localization for microscopy images · v1.0.0 ·
+  [project page](github_website/projects/vesicle_colocalization_quantifier/)
+- **[bpp_identifier](https://github.com/isomlab/bpp_identifier){:target="_blank" rel="noopener"}** — quantify bridges,
+  projections and protrusions at cell–cell boundaries · v1.0.0 ·
+  [project page](github_website/projects/bpp_identifier/)
+- **[vesicle_triangulator](https://github.com/isomlab/vesicle_triangulator){:target="_blank" rel="noopener"}** — reconstruct the
+  topology of vesicle-transfer events by Delaunay triangulation · v1.0.0 ·
+  [project page](github_website/projects/vesicle_triangulator/)
 
 ### Shared code
 
@@ -37,6 +46,3 @@ projects are documented here while they are migrated.
 ### Project pages
 
 - [superdarks](github_website/projects/superdarks/)
-- [bpp_identifier](github_website/projects/bpp_identifier/)
-- [vesicle_colocalization_quantifier](github_website/projects/vesicle_colocalization_quantifier/)
-- [vesicle_triangulator](github_website/projects/vesicle_triangulator/)

@@ -8,7 +8,11 @@ title: Project vesicle_triangulator
 
 This project reconstructs **topological relationships between vesicle transfer events** from 2D coordinate data using convex-hull / Delaunay triangulation, then writes the geometry out as both an annotated overlay image and an auto-formatted Excel workbook.
 
-- [code](code/)
+**Source code:** [github.com/isomlab/vesicle_triangulator](https://github.com/isomlab/vesicle_triangulator){:target="_blank" rel="noopener"}.
+This tool is now an installable Python package with a double-click launcher —
+see the repository README for installation.
+
+- [code](code/) — the original staged copy, kept for provenance
 - [example_input](example_input/)
 - [example_output](example_output/)
 

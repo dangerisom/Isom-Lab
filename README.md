@@ -17,9 +17,9 @@ github_website/projects/              per-project pages, code, and example data
 | Project | Contents here |
 |---|---|
 | [superdarks](github_website/projects/superdarks/) | code, example input — structural-homology search across the AlphaFold DB, plus the post-query informatics pipeline |
-| [bpp_identifier](github_website/projects/bpp_identifier/) | code, example input/output — bridge, projection and protrusion scoring at cell–cell boundaries |
-| [vesicle_colocalization_quantifier](github_website/projects/vesicle_colocalization_quantifier/) | code, example input/output — two-channel vesicle co-localization |
-| [vesicle_triangulator](github_website/projects/vesicle_triangulator/) | code, example input/output — topology of vesicle-transfer events |
+| [bpp_identifier](github_website/projects/bpp_identifier/) | now at [isomlab/bpp_identifier](https://github.com/isomlab/bpp_identifier); staged copy kept here for provenance |
+| [vesicle_colocalization_quantifier](github_website/projects/vesicle_colocalization_quantifier/) | now at [isomlab/vesicle_colocalization_quantifier](https://github.com/isomlab/vesicle_colocalization_quantifier); staged copy kept here for provenance |
+| [vesicle_triangulator](github_website/projects/vesicle_triangulator/) | now at [isomlab/vesicle_triangulator](https://github.com/isomlab/vesicle_triangulator); staged copy kept here for provenance |
 | [pHinder](github_website/projects/pHinder/) | project page and example input — the code now lives in its own repository (below) |
 
 ## Released tools
@@ -35,6 +35,9 @@ Packaged, installable tools live in their own repositories under the
   terms, co-occurrence networks, and Swanson-style hypothesis leads
 - [**litlog**](https://github.com/isomlab/litlog) — local-first tracker for the papers you read
   and how they interconnect
+- [**vesicle_colocalization_quantifier**](https://github.com/isomlab/vesicle_colocalization_quantifier) — interactive two-channel vesicle co-localization
+- [**bpp_identifier**](https://github.com/isomlab/bpp_identifier) — bridges, projections and protrusions at cell–cell boundaries
+- [**vesicle_triangulator**](https://github.com/isomlab/vesicle_triangulator) — topology of vesicle-transfer events
 - [**isomlab**](https://github.com/isomlab/isomlab) — the geometry and PDB/mmCIF modules shared
   by more than one tool. The released tools vendor their own copies, so this is the upstream
   source of truth rather than an install-time dependency.

@@ -8,7 +8,11 @@ title: Project bpp_identifier
 
 This project quantifies **bridges, projections, and protrusions** at cell–cell boundaries in microscopy overlay images using interactive connected-component analysis.
 
-- [code](code/)
+**Source code:** [github.com/isomlab/bpp_identifier](https://github.com/isomlab/bpp_identifier){:target="_blank" rel="noopener"}.
+This tool is now an installable Python package with a double-click launcher —
+see the repository README for installation.
+
+- [code](code/) — the original staged copy, kept for provenance
 - [example_input](example_input/)
 - [example_output](example_output/)
 

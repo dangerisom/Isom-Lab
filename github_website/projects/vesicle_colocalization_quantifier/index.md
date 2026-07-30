@@ -8,7 +8,11 @@ title: Project vesicle_colocalization_quantifier
 
 This project measures **two-channel pixel-level co-localization** of vesicles in microscopy images through an interactive, thresholded contour pipeline.
 
-- [code](code/)
+**Source code:** [github.com/isomlab/vesicle_colocalization_quantifier](https://github.com/isomlab/vesicle_colocalization_quantifier){:target="_blank" rel="noopener"}.
+This tool is now an installable Python package with a double-click launcher —
+see the repository README for installation.
+
+- [code](code/) — the original staged copy, kept for provenance
 - [example_input](example_input/)
 - [example_output](example_output/)
 

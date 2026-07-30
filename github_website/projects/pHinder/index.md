@@ -9,9 +9,9 @@ title: Project pHinder
 This project explores structure-based relationships using computational geometry.
 
 **Source code:** [github.com/isomlab/pHinder](https://github.com/isomlab/pHinder){:target="_blank" rel="noopener"}.
-pHinder is an installable Python package (`phinder` CLI and `phinder-gui` GUI) built on
-the Isom Lab `isomlab` core. See the repository README for installation; pip/conda
-packaging is in progress.
+pHinder is a self-contained, installable Python package (`phinder` CLI and `phinder-gui`
+GUI) — it needs no other lab repository. See the repository README for installation;
+conda packaging is in progress.
 
 - [example_input](example_input/)
 

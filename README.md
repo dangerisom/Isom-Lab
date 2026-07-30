@@ -35,8 +35,9 @@ Packaged, installable tools live in their own repositories under the
   terms, co-occurrence networks, and Swanson-style hypothesis leads
 - [**litlog**](https://github.com/isomlab/litlog) — local-first tracker for the papers you read
   and how they interconnect
-- [**isomlab**](https://github.com/isomlab/isomlab) — the shared computational-geometry and
-  structural (PDB/mmCIF) core the released tools build on
+- [**isomlab**](https://github.com/isomlab/isomlab) — the geometry and PDB/mmCIF modules shared
+  by more than one tool. The released tools vendor their own copies, so this is the upstream
+  source of truth rather than an install-time dependency.
 
 ## Archived release
 

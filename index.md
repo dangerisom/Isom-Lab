@@ -27,10 +27,12 @@ projects are documented here while they are migrated.
   read and how they interconnect, written as LLM-trainable tagged text · v0.1.1 ·
   Bioconda recipe under review
 
-### Core library
+### Shared code
 
-- **[isomlab](https://github.com/isomlab/isomlab){:target="_blank" rel="noopener"}** — shared computational-geometry and
-  structural (PDB/mmCIF) routines that the released tools are built on
+- **[isomlab](https://github.com/isomlab/isomlab){:target="_blank" rel="noopener"}** — the three
+  modules used by more than one tool: computational geometry and PDB/mmCIF parsing. Each released
+  tool ships its own copy, so you do not need this to install or run them; it is the upstream
+  source of truth where fixes are made.
 
 ### Project pages
 

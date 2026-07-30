@@ -1,7 +1,5 @@
 # Copyright (c) 2025 Isom Lab
-# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-# If a copy of the MPL was not distributed with this file, You can obtain one at
-# https://mozilla.org/MPL/2.0/.
+# Released under the MIT License; see LICENSE at the repository root.
 
 where_query_pdb_files_are_located = ""
 pdb_input_file_path = ""

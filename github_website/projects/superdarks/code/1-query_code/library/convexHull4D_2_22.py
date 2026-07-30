@@ -1,7 +1,5 @@
 # Copyright (c) 2025 Isom Lab
-# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-# If a copy of the MPL was not distributed with this file, You can obtain one at
-# https://mozilla.org/MPL/2.0/.
+# Released under the MIT License; see LICENSE at the repository root.
 
 # 2013.11.05
 # A major speed improvement using horizon ridge trick (starting with version 15).

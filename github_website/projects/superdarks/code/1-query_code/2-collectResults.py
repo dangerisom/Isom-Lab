@@ -1,7 +1,5 @@
 # Copyright (c) 2025 Isom Lab
-# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-# If a copy of the MPL was not distributed with this file, You can obtain one at
-# https://mozilla.org/MPL/2.0/.
+# Released under the MIT License; see LICENSE at the repository root.
 
 result_path = "/projectnb/isomlab/dan/in-and-out/output/alphaFold_uniprot_v4/"
 result_directory = "2025.09.27.7tmps-foldseek_e0p01/"

@@ -20,7 +20,7 @@ github_website/projects/              per-project pages, code, and example data
 | [bpp_identifier](github_website/projects/bpp_identifier/) | now at [isomlab/bpp_identifier](https://github.com/isomlab/bpp_identifier); staged copy kept here for provenance |
 | [vesicle_colocalization_quantifier](github_website/projects/vesicle_colocalization_quantifier/) | now at [isomlab/vesicle_colocalization_quantifier](https://github.com/isomlab/vesicle_colocalization_quantifier); staged copy kept here for provenance |
 | [vesicle_triangulator](github_website/projects/vesicle_triangulator/) | now at [isomlab/vesicle_triangulator](https://github.com/isomlab/vesicle_triangulator); staged copy kept here for provenance |
-| [pHinder](github_website/projects/pHinder/) | project page and example input — the code now lives in its own repository (below) |
+| [pHinder](github_website/projects/pHinder/) | code, example input — the manuscript version, kept for archival completeness; development continues at [isomlab/pHinder](https://github.com/isomlab/pHinder) |
 
 ## Released tools
 

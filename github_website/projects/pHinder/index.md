@@ -13,6 +13,7 @@ pHinder is a self-contained, installable Python package (`phinder` CLI and `phin
 GUI) — it needs no other lab repository. See the repository README for installation;
 conda packaging is in progress.
 
+- [code](code/) — the version used in the associated manuscript, kept for archival completeness
 - [example_input](example_input/)
 
 ## 🧬 What pHinder Does

@@ -9,6 +9,9 @@ We study how cells sense and respond to their environment, with a focus on acidi
 
 ## Software
 
+**New to the lab's tools?** Start with **[Setting up your computer](setup/)** — the
+one-time, no-typing setup (Mac or Windows) that every tool below assumes.
+
 Our tools are being packaged as installable Python projects. Released tools live in their own
 repositories under the [isomlab](https://github.com/isomlab){:target="_blank" rel="noopener"} organization; the remaining
 projects are documented here while they are migrated.

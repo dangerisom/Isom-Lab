@@ -42,8 +42,11 @@ are public need none of this.
 ## 2. Miniforge *(for tools that say they need conda)*
 
 Miniforge gives you a private copy of Python and everything a tool needs, without
-disturbing anything else on your computer. Some lab tools are pure Python and
-need nothing at all — their guides say so. Skip this step for those.
+disturbing anything else on your computer.
+
+> **Some tools need no conda at all** — they're pure Python. Their guides say so,
+> and point you at [Tools that don't need conda](#tools-that-dont-need-conda)
+> below instead of this step.
 
 ### Mac
 
@@ -91,6 +94,30 @@ downloads are never "blocked" by Windows, so you won't meet SmartScreen again.
 
 > **You do not need Git.** Git is a separate command-line tool. None of the lab's
 > apps ask you to use it, and GitHub Desktop already includes what it needs.
+
+---
+
+## Tools that don't need conda
+
+A few lab tools are written in nothing but Python's own standard library. They
+have no environment to build; they just need a Python 3 on the computer.
+
+- **Mac:** you already have one. To check, open Terminal and run
+  `python3 --version`.
+- **Windows:** install Python from
+  **[python.org/downloads](https://www.python.org/downloads/)** and tick **"Add
+  Python to PATH"** on the first screen of the installer.
+
+**If the tool opens a window** (rather than being command-line only) it also needs
+**Tk**, the graphics toolkit. The Mac's built-in `python3` and the python.org
+installers both include it. To check:
+
+```
+python3 -c "import tkinter; print(tkinter.TkVersion)"
+```
+
+Any version printed is fine. If you already installed Miniforge for another tool,
+its Python includes Tk too — nothing more to do.
 
 ---
 

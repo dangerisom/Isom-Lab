@@ -86,7 +86,7 @@ are private, and those need a free GitHub account that has been given access.
    email, a password, and a **username** — keep that handy. Finish signing up and
    verify your email.
 2. Send your GitHub username to Dan at
-   <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;">&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;</a>.
+   <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;">&#100;&#105;&#115;&#111;&#109;<span>&#64;</span>&#109;&#105;&#97;&#109;&#105;<span>&#46;</span>&#101;&#100;&#117;</a>.
    He adds you to the repository, and you get an email titled "[isomlab] invited
    you to collaborate". Open it and click **Accept invitation**.
 
@@ -139,7 +139,7 @@ The tools are listed on the **[main page]({{ site.baseurl }}/)**.
   fast to read. Right-click the launcher → **Copy as path**, open **Miniforge
   Prompt**, paste, press Enter. The same thing runs, but the message stays on
   screen. Send what it says to Dan at
-  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;">&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;</a>.
+  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#105;&#115;&#111;&#109;&#64;&#109;&#105;&#97;&#109;&#105;&#46;&#101;&#100;&#117;">&#100;&#105;&#115;&#111;&#109;<span>&#64;</span>&#109;&#105;&#97;&#109;&#105;<span>&#46;</span>&#101;&#100;&#117;</a>.
 - **You already have Anaconda or Miniconda** — that works too; you don't need
   Miniforge as well.
 - **Didn't get the invitation email** — check spam, and confirm Dan used the exact

@@ -4,6 +4,8 @@ title: Setting up your computer
 permalink: /setup/
 ---
 
+**[← Back to Isom Lab on GitHub]({{ site.baseurl }}/)**
+
 # Setting up your computer
 
 Most Isom Lab tools are desktop apps you start by double-clicking. Before the
@@ -117,7 +119,8 @@ getting-started guide, which is usually: download the folder, double-click the
 launcher inside `launchers/`, and wait a few minutes the first time while it
 builds its own private environment.
 
-The tools are listed on the **[main page]({{ site.baseurl }}/)**.
+Every lab tool is listed on the
+**[Isom Lab on GitHub main page]({{ site.baseurl }}/)**.
 
 ---
 
@@ -145,3 +148,7 @@ The tools are listed on the **[main page]({{ site.baseurl }}/)**.
 - **Didn't get the invitation email** — check spam, and confirm Dan used the exact
   username you signed up with. Pending invitations also appear at
   [github.com/notifications](https://github.com/notifications).
+
+---
+
+**[← Back to Isom Lab on GitHub]({{ site.baseurl }}/)**
